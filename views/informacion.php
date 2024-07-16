@@ -17,6 +17,33 @@
     ?>
 </header>
     
+<h1>Aqui encontraran una historia de como surgimos</h1>
+
+<h2>
+Cómo Surgió el Emprendimiento:
+<h2>
+
+
+<a>
+El emprendimiento nació de la observación diaria de la creciente cantidad de basura en las calles y espacios públicos de Costa Rica. Esta situación no solo afecta la estética de nuestro entorno, sino que también representa un riesgo significativo para la salud pública y la biodiversidad. Al ver la necesidad urgente de actuar, decidimos poner en marcha un proyecto que no solo recolectara la basura, sino que también promoviera el reciclaje y la educación ambiental.
+</a>
+
+<h2>
+Por Qué Surgió el Emprendimiento:
+</h2>
+
+<a>
+La motivación detrás de esta iniciativa es la preocupación por el impacto ambiental negativo que los desechos no gestionados adecuadamente tienen en nuestro país. La contaminación de suelos, ríos y océanos, así como los daños a la fauna y flora locales, son problemas graves que necesitan una solución inmediata. Además, hay una falta de conciencia generalizada sobre la importancia del reciclaje y la gestión responsable de los residuos. Este emprendimiento busca llenar ese vacío, ofreciendo una alternativa viable y sostenible.
+</a>
+
+<h2>
+Para Qué Surgió el Emprendimiento:
+</h2>
+
+<a>
+Nuestro principal objetivo es contribuir a la construcción de un Costa Rica más limpio y sostenible. A través de la recolección de basura y el reciclaje de materiales como envases, cartón y plásticos, queremos reducir la cantidad de residuos que terminan en vertederos y espacios naturales. Asimismo, buscamos educar a la comunidad sobre la importancia del reciclaje y fomentar prácticas responsables que se integren en la vida diaria de las personas. En última instancia, aspiramos a crear una cultura ambiental más consciente y activa, donde cada ciudadano se sienta responsable del cuidado de su entorno.   
+</a>
+</a>
 
 
 
