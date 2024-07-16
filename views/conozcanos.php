@@ -48,32 +48,56 @@
         <li>Transparencia y responsabilidad en todas nuestras operaciones y comunicaciones.</li>
     </ul>
         </div>
+        
       </div>
-    </div>
-  </section>
+<br>
 
-    <hr>
-
-  <section class="contactanos">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-5">
-          <h1>Contactanos:</h1>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email:</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Asunto:</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-          </div>
-          <button type="button" class="btn btn-outline-secondary">
-            Send
-          </button>
+      <div class="row justify-content-center mt-5">
+    <div class="col-md-3 mb-4">
+      <div class="card">
+        <img src="assets/img/redes-sociales.png" class="card-img-top" style="height: 200px; width: auto; object-fit: contain;" alt="Redes Sociales"/>
+        <div class="card-body text-center">
+          <h5 class="card-title mb-3">Redes sociales</h5>
+          <a href="redesSociales.php" class="btn btn-primary">Vamos ahora</a>
         </div>
       </div>
     </div>
+
+    <div class="col-md-3 mb-4 mx-md-3">
+      <div class="card">
+        <img src="assets/img/expediente.png" class="card-img-top" style="height: 200px; width: auto; object-fit: contain;" alt="Información"/>
+        <div class="card-body text-center">
+          <h5 class="card-title mb-3">Información</h5>
+          <a href="informacion.php" class="btn btn-primary">Vamos ahora</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <hr>
+
+     
+
+      <div class="row mt-5">
+    <div class="col-lg-8 mx-auto text-center">
+      <div style="text-align:center;">
+        <img src="./assets/img/Logo.jpg" alt="logo" style="width:65%;"/>
+      </div>
+    </div>
+  </div>
+    
+
+
   </section>
+
+
+
+  
+
+
+
+ 
   
 
   <footer>
