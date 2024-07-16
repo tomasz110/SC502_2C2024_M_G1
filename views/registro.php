@@ -38,9 +38,7 @@
                         <div class="form-group mb-3">
                             <div class="input-group">
                                 <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-                                <select class="form-select" style="max-width: 120px;">
-                                    <option selected="">+506</option>
-                                </select>
+                                
                                 <input name="telefono" class="form-control" placeholder="Número de teléfono" type="text">
                             </div>
                         </div>  
@@ -56,19 +54,20 @@
                                 <input class="form-control" name="password" placeholder="Repite la contraseña" type="password">
                             </div>
                         </div>                                      
-                        <div class="form-group">
+                        <div class="form-group d-flex justify-content-center">
                             <button type="submit" class="btn btn-primary btn-block"> Crear Cuenta </button>
                         </div>      
-                        <p class="text-center mt-3">¿Ya tienes una cuenta? <a href="">Inicia sesión</a></p>                                                                 
+                        <p class="text-center mt-3">¿Ya tienes una cuenta? <a href="./inicioSesion.php">Inicia sesión</a></p>                                                                 
                     </form>
                 </article>
             </div>
         </div>
     </section>
-</body>
-<footer>
+    <footer>
     <?php include 'footer.php'; ?>
 </footer>
+</body>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
