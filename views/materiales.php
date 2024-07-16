@@ -3,14 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>EcoSales</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <style>
-        table{
-            border 1px;
-        }
-    </style>
+
 </head>
 <body>
     
@@ -30,132 +26,136 @@
   <section>
     <div class="container">
         <div class="row justify-content-center mt-5">
-            <!-- Tarjeta 1 -->
             <div class="col-md-3 mb-4">
                 <div class="card">
-                    <img src="ruta/a/tu/imagen1.jpg" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Descripción de tu imagen 1"/>
+                    <img src="./assets/img/materiales/1.png" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Cartón Reciclado"/>
                     <div class="card-body text-center">
-                        <h5 class="card-title mb-3">Nombre Accesorio 1</h5>
-                        <p class="card-text">Descripción de tu accesorio 1.</p>
-                        <p class="card-text">Precio: $XX | Existencias: YY</p>
-                        <form>
-                          
+                        <h5 class="card-title mb-3">Cartón Reciclado</h5>
+                        <p class="card-text">Cartón reciclado de alta calidad.</p>
+                        <p class="card-text">Precio: $10 por kg | Existencias: 500 kg</p>
+                      
+                            <button class="btn btn-primary btn-block"type="button">Añadir al carrito</button>
+                        
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="./assets/img/materiales/2.png" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Latas Recicladas"/>
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-3">Latas Recicladas</h5>
+                        <p class="card-text">Latas de aluminio recicladas.</p>
+                        <p class="card-text">Precio: $5 por kg | Existencias: 300 kg</p>
+                      
+                           
                             <button class="btn btn-primary btn-block" type="button">Añadir al carrito</button>
-                        </form>
+                       
                     </div>
                 </div>
             </div>
 
-            <!-- Tarjeta 2 -->
+            
             <div class="col-md-3 mb-4">
                 <div class="card">
-                    <img src="ruta/a/tu/imagen2.jpg" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Descripción de tu imagen 2"/>
+                    <img src="./assets/img/materiales/3.png" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Plástico Reciclado"/>
                     <div class="card-body text-center">
-                        <h5 class="card-title mb-3">Nombre Accesorio 2</h5>
-                        <p class="card-text">Descripción de tu accesorio 2.</p>
-                        <p class="card-text">Precio: $XX | Existencias: YY</p>
-                        <form>
-                            <input type="hidden" name="idAccesorio2" value="id2" />
-                            <button class="btn btn-primary btn-block" onclick="addCard(this.form)" type="button">Añadir al carrito</button>
-                        </form>
+                        <h5 class="card-title mb-3">Plástico Reciclado</h5>
+                        <p class="card-text">Plástico reciclado de diferentes tipos.</p>
+                        <p class="card-text">Precio: $8 por kg | Existencias: 200 kg</p>
+                       
+                           
+                            <button class="btn btn-primary btn-block" type="button">Añadir al carrito</button>
+                        
                     </div>
                 </div>
             </div>
 
-            <!-- Tarjeta 3 -->
+          
             <div class="col-md-3 mb-4">
                 <div class="card">
-                    <img src="ruta/a/tu/imagen3.jpg" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Descripción de tu imagen 3"/>
+                    <img src="./assets/img/materiales/4.png" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Vidrio Reciclado"/>
                     <div class="card-body text-center">
-                        <h5 class="card-title mb-3">Nombre Accesorio 3</h5>
-                        <p class="card-text">Descripción de tu accesorio 3.</p>
-                        <p class="card-text">Precio: $XX | Existencias: YY</p>
-                        <form>
-                            <input type="hidden" name="idAccesorio3" value="id3" />
-                            <button class="btn btn-primary btn-block" onclick="addCard(this.form)" type="button">Añadir al carrito</button>
-                        </form>
+                        <h5 class="card-title mb-3">Vidrio Reciclado</h5>
+                        <p class="card-text">Vidrio reciclado.</p>
+                        <p class="card-text">Precio: $7 por kg | Existencias: 400 kg</p>
+                  
+                       
+                            <button class="btn btn-primary btn-block" type="button">Añadir al carrito</button>
+                    
                     </div>
                 </div>
             </div>
 
+          
             <div class="col-md-3 mb-4">
                 <div class="card">
-                    <img src="ruta/a/tu/imagen3.jpg" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Descripción de tu imagen 3"/>
+                    <img src="./assets/img/materiales/5.png" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Papel Reciclado"/>
                     <div class="card-body text-center">
-                        <h5 class="card-title mb-3">Nombre Accesorio 3</h5>
-                        <p class="card-text">Descripción de tu accesorio 3.</p>
-                        <p class="card-text">Precio: $XX | Existencias: YY</p>
-                        <form>
-                            <input type="hidden" name="idAccesorio3" value="id3" />
-                            <button class="btn btn-primary btn-block" onclick="addCard(this.form)" type="button">Añadir al carrito</button>
-                        </form>
+                        <h5 class="card-title mb-3">Papel Reciclado</h5>
+                        <p class="card-text">Papel reciclado, ideal para impresiones y manualidades.</p>
+                        <p class="card-text">Precio: $6 por kg | Existencias: 600 kg</p>
+                     
+                           
+                            <button class="btn btn-primary btn-block" type="button">Añadir al carrito</button>
+                      
                     </div>
                 </div>
             </div>
 
+          
             <div class="col-md-3 mb-4">
                 <div class="card">
-                    <img src="ruta/a/tu/imagen3.jpg" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Descripción de tu imagen 3"/>
+                    <img src="./assets/img/materiales/6.png" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Metales Reciclados"/>
                     <div class="card-body text-center">
-                        <h5 class="card-title mb-3">Nombre Accesorio 3</h5>
-                        <p class="card-text">Descripción de tu accesorio 3.</p>
-                        <p class="card-text">Precio: $XX | Existencias: YY</p>
-                        <form>
-                            <input type="hidden" name="idAccesorio3" value="id3" />
-                            <button class="btn btn-primary btn-block" onclick="addCard(this.form)" type="button">Añadir al carrito</button>
-                        </form>
+                        <h5 class="card-title mb-3">Metales Reciclados</h5>
+                        <p class="card-text">Metales reciclados, incluyendo hierro y cobre.</p>
+                        <p class="card-text">Precio: $12 por kg | Existencias: 150 kg</p>
+                     
+                            
+                            <button class="btn btn-primary btn-block" type="button">Añadir al carrito</button>
+                        
                     </div>
                 </div>
             </div>
 
+            
             <div class="col-md-3 mb-4">
                 <div class="card">
-                    <img src="ruta/a/tu/imagen3.jpg" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Descripción de tu imagen 3"/>
+                    <img src="./assets/img/materiales/7.png" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Textiles Reciclados"/>
                     <div class="card-body text-center">
-                        <h5 class="card-title mb-3">Nombre Accesorio 3</h5>
-                        <p class="card-text">Descripción de tu accesorio 3.</p>
-                        <p class="card-text">Precio: $XX | Existencias: YY</p>
-                        <form>
-                            <input type="hidden" name="idAccesorio3" value="id3" />
-                            <button class="btn btn-primary btn-block" onclick="addCard(this.form)" type="button">Añadir al carrito</button>
-                        </form>
+                        <h5 class="card-title mb-3">Textiles Reciclados</h5>
+                        <p class="card-text">Textiles reciclados de diferentes tipos y colores.</p>
+                        <p class="card-text">Precio: $4 por kg | Existencias: 350 kg</p>
+                       
+                            
+                            <button class="btn btn-primary btn-block" type="button">Añadir al carrito</button>
+                      
                     </div>
                 </div>
             </div>
 
+          
             <div class="col-md-3 mb-4">
                 <div class="card">
-                    <img src="ruta/a/tu/imagen3.jpg" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Descripción de tu imagen 3"/>
+                    <img src="./assets/img/materiales/8.png" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Electrónicos Reciclados"/>
                     <div class="card-body text-center">
-                        <h5 class="card-title mb-3">Nombre Accesorio 3</h5>
-                        <p class="card-text">Descripción de tu accesorio 3.</p>
-                        <p class="card-text">Precio: $XX | Existencias: YY</p>
-                        <form>
-                            <input type="hidden" name="idAccesorio3" value="id3" />
-                            <button class="btn btn-primary btn-block" onclick="addCard(this.form)" type="button">Añadir al carrito</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tarjeta 4 -->
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="ruta/a/tu/imagen4.jpg" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Descripción de tu imagen 4"/>
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-3">Nombre Accesorio 4</h5>
-                        <p class="card-text">Descripción de tu accesorio 4.</p>
-                        <p class="card-text">Precio: $XX | Existencias: YY</p>
-                        <form>
-                            <input type="hidden" name="idAccesorio4" value="id4" />
-                            <button class="btn btn-primary btn-block" onclick="addCard(this.form)" type="button">Añadir al carrito</button>
-                        </form>
+                        <h5 class="card-title mb-3">Electrónicos Reciclados</h5>
+                        <p class="card-text">Componentes electrónicos de todo tipo reciclados.</p>
+                        <p class="card-text">Precio: $15 por kg | Existencias: 100 kg</p>
+                     
+                           
+                            <button class="btn btn-primary btn-block" type="button">Añadir al carrito</button>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+
 
 
 
