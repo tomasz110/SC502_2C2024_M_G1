@@ -19,8 +19,32 @@
     ?>
 
   </header>
-  <section >
-   
+  <section id="inicioSesion">
+    <div class="d-flex justify-content-center align-items-center mt-5 mb-5">
+        <div class="card bg-light shadow-sm" style="width: 310px; height: 400px;">
+            <article class="card-body mx-auto" style="max-width: 400px;">
+                <h4 class="card-title mt-3 text-center">Inicio sesion</h4>
+                <form>
+                    <div class="form-group mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                            <input name="email" class="form-control" placeholder="Correo electrónico" type="email" autocomplete="off">
+                        </div>
+                    </div> 
+                    <div class="form-group mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                            <input class="form-control" name="password" placeholder="Crea una contraseña" type="password">
+                        </div>
+                    </div> 
+                    <div class="form-group d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary btn-block"> Iniciar sesion </button>
+                    </div>      
+                    <p class="text-center mt-3">¿No tienes una cuenta? <a href="./registro.php">Registrate aqui</a></p>                                                                 
+                </form>
+            </article>
+        </div>
+    </div>
 </section>
 
 
