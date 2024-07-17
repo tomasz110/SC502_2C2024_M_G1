@@ -8,7 +8,7 @@
     text-decoration: none;
   }
   .nav {
-    background: #829982;
+    background: #6B8F71;
     padding: 10px;
     display: flex;
     align-items: center;
@@ -25,6 +25,7 @@
     left: 10px; 
     color: black; 
     top: 13px;
+    text-decoration: none;
   }
   .inicioSesion {
     position: absolute;
@@ -49,7 +50,7 @@
 <header>
   <ul class="nav nav-underline">
     <li>
-      <span class="logo">EcoSales</span>
+      <a class="logo" href="./campañas.php">EcoSales</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="./campañas.php">Campañas</a>

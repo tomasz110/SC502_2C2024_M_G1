@@ -6,6 +6,7 @@
     <title>EcoSales</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 </head>
 <body>
   <header>
@@ -59,7 +60,7 @@
         <img src="assets/img/redes-sociales.png" class="card-img-top" style="height: 200px; width: auto; object-fit: contain;" alt="Redes Sociales"/>
         <div class="card-body text-center">
           <h5 class="card-title mb-3">Redes sociales</h5>
-          <a href="redesSociales.php" class="btn btn-primary">Vamos ahora</a>
+          <a href="redesSociales.php" class="btn btn-success">Vamos ahora</a>
         </div>
       </div>
     </div>
@@ -69,7 +70,7 @@
         <img src="assets/img/expediente.png" class="card-img-top" style="height: 200px; width: auto; object-fit: contain;" alt="Información"/>
         <div class="card-body text-center">
           <h5 class="card-title mb-3">Información</h5>
-          <a href="informacion.php" class="btn btn-primary">Vamos ahora</a>
+          <a href="informacion.php" class="btn btn-success">Vamos ahora</a>
         </div>
       </div>
     </div>
