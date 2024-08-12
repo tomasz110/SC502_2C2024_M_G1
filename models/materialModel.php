@@ -1,16 +1,17 @@
 <?php
 require_once '../config/Conexion.php';
 
-class productoModel extends Conexion
+class materialModel extends Conexion
 {
     /*=============================================
 	=            Atributos de la Clase            =
 	=============================================*/
         protected static $cnx;
-		private $id_materiales_pk = null;
+		private $id_producto_pk = null;
+		private $id_emprendedor_fk = null;
 		private $id_estado_fk = null;
-		private $nombre_material = null;
-		private $descripcion_material = null;
+		private $nombre_producto = null;
+		private $descripcion_producto = null;
         private $precio_producto = null;
 		private $existencias_producto = null;
 		private $ruta_imagen_producto = null;
@@ -25,14 +26,24 @@ class productoModel extends Conexion
     /*=============================================
 	=            Encapsuladores de la Clase       =
 	=============================================*/
-    public function getIdMaterialesPk()
+    public function getIdProductoPk()
     {
-        return $this->id_materiales_pk;
+        return $this->id_producto_pk;
     }
 
-    public function setIdMaterialesPk($id_materiales_pk)
+    public function setIdProductoPk($id_producto_pk)
     {
-        $this->id_materiales_pk = $id_materiales_pk;
+        $this->id_producto_pk = $id_producto_pk;
+    }
+
+    public function getIdEmprendedorFk()
+    {
+        return $this->id_emprendedor_fk;
+    }
+
+    public function setIdEmprendedorFk($id_emprendedor_fk)
+    {
+        $this->id_emprendedor_fk = $id_emprendedor_fk;
     }
 
     public function getIdEstadoFk()
@@ -45,24 +56,24 @@ class productoModel extends Conexion
         $this->id_estado_fk = $id_estado_fk;
     }
 
-    public function getNombreMaterial()
+    public function getNombreProducto()
     {
-        return $this->nombre_material;
+        return $this->nombre_producto;
     }
 
-    public function setNombreMaterial($nombre_material)
+    public function setNombreProducto($nombre_producto)
     {
-        $this->nombre_material = $nombre_material;
+        $this->nombre_producto = $nombre_producto;
     }
 
-    public function getDescripcionMaterial()
+    public function getDescripcionProducto()
     {
-        return $this->descripcion_material;
+        return $this->descripcion_producto;
     }
 
-    public function setDescripcionMaterial($descripcion_material)
+    public function setDescripcionProducto($descripcion_producto)
     {
-        $this->descripcion_material = $descripcion_material;
+        $this->descripcion_producto = $descripcion_producto;
     }
 
     public function getPrecioProducto()
@@ -109,7 +120,7 @@ class productoModel extends Conexion
         }
 
         public function listarTodosDb(){
-            $query = "SELECT * FROM fide_materiales_tb";
+            $query = "SELECT * FROM fide_productos_tb";
             $arr = array();
             try {
                 self::getConexion();
@@ -117,15 +128,16 @@ class productoModel extends Conexion
                 $resultado->execute();
                 self::desconectar();
                 foreach ($resultado->fetchAll() as $encontrado) {
-                    $material = new materialModel();
-                    $material->setIdMaterialesPk($encontrado['id_materiales_pk']);
-                    $material->setIdEstadoFk($encontrado['id_estado_fk']);
-                    $material->setNombreMaterial($encontrado['nombre_material']);
-                    $material->setDescripcionMaterial($encontrado['descripcion_material']);
-                    $material->setPrecioProducto($encontrado['precio_producto']);
-                    $material->setExistenciasProducto($encontrado['existencias_producto']);
-                    $material->setRutaImagenProducto($encontrado['ruta_imagen_producto']);
-                    $arr[] = $material;
+                    $producto = new materialModel();
+                    $producto->setIdProductoPk($encontrado['id_producto_pk']);
+                    $producto->setIdEmprendedorFk($encontrado['id_emprendedor_fk']);
+                    $producto->setIdEstadoFk($encontrado['id_estado_fk']);
+                    $producto->setNombreProducto($encontrado['nombre_producto']);
+                    $producto->setDescripcionProducto($encontrado['descripcion_producto']);
+                    $producto->setPrecioProducto($encontrado['precio_producto']);
+                    $producto->setExistenciasProducto($encontrado['existencias_producto']);
+                    $producto->setRutaImagenProducto($encontrado['ruta_imagen_producto']);
+                    $arr[] = $producto;
                 }
                 return $arr;
             } catch (PDOException $Exception) {
@@ -136,21 +148,23 @@ class productoModel extends Conexion
         }
 
         public function guardarEnDb(){
-            $query = "INSERT INTO `fide_materiales_tb`(`id_estado_fk`, `nombre_material`, `descripcion_material`, `precio_producto`, `existencias_producto`, `ruta_imagen_producto`)
-             VALUES (:id_estado_fk, :nombre_material, :descripcion_material, :precio_producto, :existencias_producto, :ruta_imagen_producto)";
+            $query = "INSERT INTO fide_productos_tb(id_emprendedor_fk, id_estado_fk, nombre_producto, descripcion_producto, precio_producto, existencias_producto, ruta_imagen_producto)
+             VALUES (:id_emprendedor_fk, :id_estado_fk, :nombre_producto, :descripcion_producto, :precio_producto, :existencias_producto, :ruta_imagen_producto)";
             try {
                 self::getConexion();
-                $id_estado_fk = strtoupper($this->getIdEstadoFk());
-                $nombre_material = $this->getNombreMaterial();
-                $descripcion_material = $this->getDescripcionMaterial();
+                $id_emprendedor_fk = $this->getIdEmprendedorFk();
+                $id_estado_fk = $this->getIdEstadoFk();
+                $nombre_producto = $this->getNombreProducto();
+                $descripcion_producto = $this->getDescripcionProducto();
                 $precio_producto = $this->getPrecioProducto();
                 $existencias_producto = $this->getExistenciasProducto();
                 $ruta_imagen_producto = $this->getRutaImagenProducto();
 
                 $resultado = self::$cnx->prepare($query);
+                $resultado->bindParam(":id_emprendedor_fk", $id_emprendedor_fk, PDO::PARAM_INT);
                 $resultado->bindParam(":id_estado_fk", $id_estado_fk, PDO::PARAM_INT);
-                $resultado->bindParam(":nombre_material", $nombre_material, PDO::PARAM_STR);
-                $resultado->bindParam(":descripcion_material", $descripcion_material, PDO::PARAM_STR);
+                $resultado->bindParam(":nombre_producto", $nombre_producto, PDO::PARAM_STR);
+                $resultado->bindParam(":descripcion_producto", $descripcion_producto, PDO::PARAM_STR);
                 $resultado->bindParam(":precio_producto", $precio_producto, PDO::PARAM_STR);
                 $resultado->bindParam(":existencias_producto", $existencias_producto, PDO::PARAM_INT);
                 $resultado->bindParam(":ruta_imagen_producto", $ruta_imagen_producto, PDO::PARAM_STR);
@@ -163,25 +177,27 @@ class productoModel extends Conexion
             }
         }
 
-        public function actualizarMaterial(){
-            $query = "UPDATE fide_materiales_tb SET id_estado_fk=:id_estado_fk, nombre_material=:nombre_material, descripcion_material=:descripcion_material, precio_producto=:precio_producto, existencias_producto=:existencias_producto, ruta_imagen_producto=:ruta_imagen_producto
-            WHERE id_materiales_pk=:id_materiales_pk";
+        public function actualizarProducto(){
+            $query = "UPDATE fide_productos_tb SET id_emprendedor_fk=:id_emprendedor_fk, id_estado_fk=:id_estado_fk, nombre_producto=:nombre_producto, descripcion_producto=:descripcion_producto, precio_producto=:precio_producto, existencias_producto=:existencias_producto, ruta_imagen_producto=:ruta_imagen_producto
+            WHERE id_producto_pk=:id_producto_pk";
             try {
                 self::getConexion();
-                $id_materiales_pk = $this->getIdMaterialesPk();
+                $id_producto_pk = $this->getIdMaterialesPk();
+                $id_emprendedor_fk = $this->getIdEmprendedorFk();
                 $id_estado_fk = $this->getIdEstadoFk();
-                $nombre_material = $this->getNombreMaterial();
-                $descripcion_material = $this->getDescripcionMaterial();
+                $nombre_producto = $this->getNombreProducto();
+                $descripcion_producto = $this->getDescripcionProducto();
                 $precio_producto = $this->getPrecioProducto();
                 $existencias_producto = $this->getExistenciasProducto();
                 $ruta_imagen_producto = $this->getRutaImagenProducto();
                 
 
                 $resultado = self::$cnx->prepare($query);
-                $resultado->bindParam(":id_materiales_pk", $id_materiales_pk, PDO::PARAM_INT);
+                $resultado->bindParam(":id_producto_pk", $id_producto_pk, PDO::PARAM_INT);
+                $resultado->bindParam(":id_emprendedor_fk", $id_emprendedor_fk, PDO::PARAM_INT);
                 $resultado->bindParam(":id_estado_fk", $id_estado_fk, PDO::PARAM_INT);
-                $resultado->bindParam(":nombre_material", $nombre_material, PDO::PARAM_STR);
-                $resultado->bindParam(":descripcion_material", $descripcion_material, PDO::PARAM_STR);
+                $resultado->bindParam(":nombre_producto", $nombre_producto, PDO::PARAM_STR);
+                $resultado->bindParam(":descripcion_producto", $descripcion_producto, PDO::PARAM_STR);
                 $resultado->bindParam(":precio_producto", $precio_producto, PDO::PARAM_STR);
                 $resultado->bindParam(":existencias_producto", $existencias_producto, PDO::PARAM_INT);
                 $resultado->bindParam(":ruta_imagen_producto", $ruta_imagen_producto, PDO::PARAM_STR);
@@ -195,23 +211,23 @@ class productoModel extends Conexion
             }
         }
 
-        public function llenarCampos($id_materiales_pk){
-            $query = "SELECT * FROM fide_materiales_tb where id_materiales_pk=:id_materiales_pk";
+        public function llenarCampos($id_producto_pk){
+            $query = "SELECT * FROM fide_productos_tb WHERE id_producto_pk=:id_producto_pk";
             try {
                 self::getConexion();
                 $resultado = self::$cnx->prepare($query);
-                $resultado->bindParam(":id_materiales_pk", $id_materiales_pk, PDO::PARAM_INT);
+                $resultado->bindParam(":id_producto_pk", $id_producto_pk, PDO::PARAM_INT);
                 $resultado->execute();
                 self::desconectar();
                 foreach ($resultado->fetchAll() as $encontrado) {
-                    $this->setIdMaterialesPk($encontrado['id_materiales_pk']);
+                    $this->setIdProductoPk($encontrado['id_producto_pk']);
+                    $this->setIdEmprendedorFk($encontrado['id_emprendedor_fk']);
                     $this->setIdEstadoFk($encontrado['id_estado_fk']);
-                    $this->setNombreMaterial($encontrado['nombre_material']);
-                    $this->setDescripcionMaterial($encontrado['descripcion_material']);
+                    $this->setNombreProducto($encontrado['nombre_producto']);
+                    $this->setDescripcionProducto($encontrado['descripcion_producto']);
                     $this->setPrecioProducto($encontrado['precio_producto']);
                     $this->setExistenciasProducto($encontrado['existencias_producto']);
                     $this->setRutaImagenProducto($encontrado['ruta_imagen_producto']);
-
                 }
             } catch (PDOException $Exception) {
                 self::desconectar();
@@ -219,24 +235,26 @@ class productoModel extends Conexion
                 return json_encode($error);
             }
         }
+
         public function verificarExistenciaDb() {
-            $query = "SELECT id_materiales_pk, id_estado_fk, nombre_material, descripcion_material, precio_producto, existencias_producto, ruta_imagen_producto 
-                      FROM fide_materiales_tb 
-                      WHERE nombre_material = :nombre_material AND id_estado_fk = 1";
+            $query = "SELECT id_producto_pk, id_emprendedor_fk, id_estado_fk, nombre_producto, descripcion_producto, precio_producto, existencias_producto, ruta_imagen_producto 
+                      FROM fide_productos_tb 
+                      WHERE nombre_producto = :nombre_producto AND id_estado_fk = 1";
             try {
                 self::getConexion();
                 $resultado = self::$cnx->prepare($query);		
-                $nombre_material = $this->getNombreMaterial();		
-                $resultado->bindParam(":nombre_material", $nombre_material, PDO::PARAM_STR);
+                $nombre_producto = $this->getNombreProducto();		
+                $resultado->bindParam(":nombre_producto", $nombre_producto, PDO::PARAM_STR);
                 $resultado->execute();
                 self::desconectar();
                 $encontrado = false;
                 $arr = array();
                 foreach ($resultado->fetchAll() as $reg) {
-                    $arr['id_materiales_pk'] = $reg['id_materiales_pk'];
+                    $arr['id_producto_pk'] = $reg['id_producto_pk'];
+                    $arr['id_emprendedor_fk'] = $reg['id_emprendedor_fk'];
                     $arr['id_estado_fk'] = $reg['id_estado_fk'];
-                    $arr['nombre_material'] = $reg['nombre_material'];
-                    $arr['descripcion_material'] = $reg['descripcion_material'];
+                    $arr['nombre_producto'] = $reg['nombre_producto'];
+                    $arr['descripcion_producto'] = $reg['descripcion_producto'];
                     $arr['precio_producto'] = $reg['precio_producto'];
                     $arr['existencias_producto'] = $reg['existencias_producto'];
                     $arr['ruta_imagen_producto'] = $reg['ruta_imagen_producto'];
@@ -249,7 +267,6 @@ class productoModel extends Conexion
                 return $error;
             }
         }
-        
     /*=====  End of Métodos de la Clase  ======*/
 }
 ?>
