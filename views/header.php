@@ -18,6 +18,13 @@
   .nav-link:hover {
     color: white;
   }
+
+  .nav-link.active {
+  color: white;
+  background-color: white; 
+  border-radius: 5px;
+}
+
   .logo {
     font-size: 24px; 
     font-weight: bold; 
@@ -50,7 +57,7 @@
 <header>
   <ul class="nav nav-underline">
     <li>
-      <a class="logo" href="./campañas.php">EcoSales</a>
+     <a class="logo " href="./campañas.php">EcoSales</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="./campañas.php">Campañas</a>
@@ -69,3 +76,15 @@
     </li>
   </ul>
 </header>
+
+
+<script>
+  const currentPage = window.location.pathname.split("/").pop();
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  navLinks.forEach(link => {
+    if (link.getAttribute("href") === `./${currentPage}`) {
+      link.classList.add("active");
+    }
+  });
+</script>

@@ -20,7 +20,13 @@
   </header>
 
 
-
+  <div class="container">
+  <h2 class="text-center py-4" style="color:#6B8F71">
+  <hr>
+    En este apartado encontrarás la lista de todos los materiales recolectados en las campañas que te ofrecemos para que puedas 
+    que puedes utilizar para tus emprendedurismos y creaciones.</h2>
+  </div>
+  <hr style="color:#6B8F71">
 
 
   <section>
