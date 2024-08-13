@@ -17,8 +17,6 @@
   </header>
 
   <section class="mt-5 text-center">
-          
-
             <div class="container">
                 <div id="carouselExampleIndicators" class="carousel slide mx-auto" style="width: 1200px;"> 
                     <div class="carousel-indicators">
@@ -56,6 +54,12 @@
 
   </section>
 
+ <div class="container">
+  <h1 class="text-center font-weight-bold py-4" style="color:#6B8F71">
+  <hr>
+  Conocé nuestras campañas en todo el país y ayudanos a tener un país más limpio y un futuro más sostenible! :)</h1>
+  </div>
+  <hr style="color:#6B8F71">
   <section id="campañas" class="pt-md-5">
   <div class="container-fluid">
     <div class="row justify-content-center">
@@ -80,7 +84,12 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <p>Esta campaña tiene como objetivo educar a la comunidad costarricense sobre prácticas de reciclaje efectivas y sostenibles. Incluye actividades de recolección, talleres educativos y actividades comunitarias.</p>
+            <p>
+          <strong>Lugar:</strong><br/>
+          <strong>Fecha:</strong><br/>
+          <strong>Patrocinadores:</strong> <br/>
+          <strong>Organizadores:</strong><br/>
+          <strong>Descripcion de la actividad:</strong> Esta campaña tiene como objetivo educar a la comunidad costarricense sobre prácticas de reciclaje efectivas y sostenibles. Incluye actividades de recolección, talleres educativos y actividades comunitarias.</p>
               <div><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62879.69464419138!2d-84.11334505!3d9.93554565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e342c50d15c5%3A0xe6746a6a9f11b882!2zU2FuIEpvc8Op!5e0!3m2!1ses!2scr!4v1721159382629!5m2!1ses!2scr" width="465" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
             </div>
             <div class="modal-footer">
@@ -112,7 +121,13 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <p>Esta campaña se centra en la recolección masiva de latas de aluminio en áreas específicas de Puntarenas. El evento incluye incentivos para motivar la participación y acciones para concienciar sobre la importancia del reciclaje de metales.</p>
+            <p>
+          <strong>Lugar:</strong><br/>
+          <strong>Fecha:</strong><br/>
+          <strong>Patrocinadores:</strong> <br/>
+          <strong>Organizadores:</strong><br/>
+          <strong>Descripcion de la actividad:</strong><br/>
+                Esta campaña se centra en la recolección masiva de latas de aluminio en áreas específicas de Puntarenas. El evento incluye incentivos para motivar la participación y acciones para concienciar sobre la importancia del reciclaje de metales.</p>
               <div><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31435.700825105334!2d-84.84282054041536!3d9.978592384643143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa02eb96dada6b7%3A0x3f48bd110f83d5ec!2sProvincia%20de%20Puntarenas%2C%20Puntarenas!5e0!3m2!1ses!2scr!4v1721159497344!5m2!1ses!2scr" width="465" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
             </div>
             <div class="modal-footer">
@@ -148,7 +163,13 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <p>Esta campaña amplía las iniciativas de reciclaje de latas, enfocándose en comunidades y centros urbanos de Cartago. Incluye programas educativos y actividades para involucrar a empresas locales a que se unan a esta causa.</p>
+            <p>
+          <strong>Lugar:</strong><br/>
+          <strong>Fecha:</strong><br/>
+          <strong>Patrocinadores:</strong> <br/>
+          <strong>Organizadores:</strong><br/>
+          <strong>Descripcion de la actividad:</strong><br/>  
+              Esta campaña amplía las iniciativas de reciclaje de latas, enfocándose en comunidades y centros urbanos de Cartago. Incluye programas educativos y actividades para involucrar a empresas locales a que se unan a esta causa.</p>
               <div><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d503219.80901325436!2d-84.02967408305297!3d9.816331308254293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0d69b084d750d%3A0x115b1ac11b9a1990!2sProvincia%20de%20Cartago!5e0!3m2!1ses!2scr!4v1721159544334!5m2!1ses!2scr" width="465" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
             </div>
             <div class="modal-footer">
@@ -179,7 +200,13 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <p>Esta campaña aborda específicamente la gestión de residuos de botellas plásticas y de vidrio en San José. Incluye puntos de recolección, métodos de reciclaje y consejos para minimizar el consumo de envases desechables.</p>
+            <p>
+          <strong>Lugar:</strong><br/>
+          <strong>Fecha:</strong><br/>
+          <strong>Patrocinadores:</strong> <br/>
+          <strong>Organizadores:</strong><br/>
+          <strong>Descripcion de la actividad:</strong><br/>  
+              Esta campaña aborda específicamente la gestión de residuos de botellas plásticas y de vidrio en San José. Incluye puntos de recolección, métodos de reciclaje y consejos para minimizar el consumo de envases desechables.</p>
               <div><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7859.961154629086!2d-84.1139781774772!3d9.935573777277318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fcab0a0197a5%3A0x6ede71a0096b9231!2sSan%20Jos%C3%A9%2C%20Sabana!5e0!3m2!1ses!2scr!4v1721159627598!5m2!1ses!2scr" width="465" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
             </div>
             <div class="modal-footer">
@@ -207,5 +234,6 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 
 </html>

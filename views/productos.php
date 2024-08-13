@@ -17,6 +17,15 @@
     ?>
 
   </header>
+
+  <div class="container">
+  <h2 class="text-center py-4" style="color:#6B8F71">
+    <hr>
+    En este apartado encontrarás todos los productos hechos por artistas locales con los materiales recolectados en nuestras
+    campañas.</h2>
+    <h3 class="text-start py-4" style="color:#6B8F71">Comprá y ayudá al medio ambiente y pequeños artistas locales! </h3>
+  </div>
+  <hr style="color:#6B8F71">
   <section>
     <div class="container">
         <div class="row justify-content-center mt-5">
