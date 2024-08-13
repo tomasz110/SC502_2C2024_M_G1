@@ -37,6 +37,8 @@ $(function () {
 });
 
 
+
+
 $('#producto_add').on('submit', function (event) {
     event.preventDefault();
     $('#btnRegistrar').prop('disabled', true);
@@ -76,7 +78,7 @@ $('#producto_add').on('submit', function (event) {
 // Función para cargar el listado de productos en las cards
 function listarProductosEnCards() {
     $.ajax({
-        url: '../controllers/productoController.php?op=listar_para_tabla',
+        url: '../controllers/productoController.php?op=listar_activos',
         type: 'get',
         dataType: 'json',
         success: function(response) {
@@ -104,6 +106,7 @@ function listarProductosEnCards() {
         }
     });
 }
+
 
 // Función Principal
 $(function () {

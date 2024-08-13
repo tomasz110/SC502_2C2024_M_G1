@@ -38,7 +38,7 @@ $(function () {
 
 function listarMaterialesEnCards() {
     $.ajax({
-        url: '../controllers/materialController.php?op=listar_para_tabla',
+        url: '../controllers/materialController.php?op=listar_activos',
         type: 'get',
         dataType: 'json',
         success: function(response) {

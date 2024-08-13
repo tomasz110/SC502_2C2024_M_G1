@@ -29,6 +29,32 @@ switch ($_GET["op"]) {
         echo json_encode($resultados);
         break;
 
+        case 'listar_activos':
+            $producto_model = new productoModel();
+            $productos = $producto_model->listarProductosActivos(); // Cambiado a listarProductosActivos
+            $data = array();
+            foreach ($productos as $producto) {
+                $data[] = array(
+                    "0" => $producto->getIdProducto(),
+                    "1" => $producto->getNombreProducto(),
+                    "2" => $producto->getDescripcionProducto(),
+                    "3" => number_format($producto->getPrecioProducto(), 2),
+                    "4" => $producto->getExistenciasProducto(),
+                    "5" => $producto->getRutaImagenProducto(),
+                    "6" => '<span class="label bg-success"> Activado </span>',
+                    "7" => '<button class="btn btn-warning" id="modificarProducto">Modificar</button> ' .
+                        '<button class="btn btn-danger" onclick="desactivar('.$producto->getIdProducto().')">Desactivar</button>'
+                );
+            }
+            $resultados = array(
+                "sEcho" => 1,
+                "iTotalRecords" => count($data),
+                "iTotalDisplayRecords" => count($data),
+                "aaData" => $data
+            );
+            echo json_encode($resultados);
+            break;
+
     case 'insertar':
         $nombre = isset($_POST["nombre"]) ? trim($_POST["nombre"]) : "";
         $descripcion = isset($_POST["descripcion"]) ? trim($_POST["descripcion"]) : "";

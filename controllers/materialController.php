@@ -28,6 +28,32 @@ switch ($_GET["op"]) {
         echo json_encode($resultados);
         break;
 
+        case 'listar_activos':
+            $material_model = new materialModel();
+            $materiales = $material_model->listarMaterialesActivos();
+            $data = array();
+            foreach ($materiales as $material) {
+                $data[] = array(
+                    "0" => $material->getIdMateriales(),
+                    "1" => $material->getNombreMaterial(),
+                    "2" => $material->getDescripcionMaterial(),
+                    "3" => number_format($material->getPrecioMaterial(), 2),
+                    "4" => $material->getExistenciasMaterial(),
+                    "5" => $material->getRutaImagenMaterial(),
+                    "6" => ($material->getIdEstado() == 1) ? '<span class="label bg-success"> Activado </span>' : '<span class="label bg-danger"> Desactivado </span>',
+                    "7" => '<button class="btn btn-warning" id="modificarMaterial">Modificar</button> ' .
+                        ($material->getIdEstado() == 1 ? '<button class="btn btn-danger" onclick="desactivar('.$material->getIdMateriales().')">Desactivar</button>' : '<button class="btn btn-success" onclick="activar('.$material->getIdMateriales().')">Activar</button>')
+                );
+            }
+            $resultados = array(
+                "sEcho" => 1,
+                "iTotalRecords" => count($data),
+                "iTotalDisplayRecords" => count($data),
+                "aaData" => $data
+            );
+            echo json_encode($resultados);
+            break;
+
     case 'insertar':
         $nombre = isset($_POST["nombre"]) ? trim($_POST["nombre"]) : "";
         $descripcion = isset($_POST["descripcion"]) ? trim($_POST["descripcion"]) : "";

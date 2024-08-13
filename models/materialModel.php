@@ -15,7 +15,7 @@ class materialModel extends Conexion
     private $existencias_material = null;
     private $ruta_imagen_material = null;
 
-    /*=====  End of Atributos de la Clase  ======*/
+
 
     /*=============================================
     =            Encapsuladores de la Clase       =
@@ -89,7 +89,7 @@ class materialModel extends Conexion
     {
         $this->ruta_imagen_material = $ruta_imagen_material;
     }
-    /*=====  End of Encapsuladores de la Clase  ======*/
+
 
     /*=============================================
     =            Metodos de la Clase              =
@@ -129,6 +129,33 @@ class materialModel extends Conexion
             return "Error ".$Exception->getCode().": ".$Exception->getMessage();
         }
     }
+    public function listarMaterialesActivos() {
+        $query = "SELECT * FROM FIDE_MATERIALES_TB WHERE id_estado_fk = 1"; // Filtra solo los activos
+        $arr = array();
+        try {
+            self::getConexion();
+            $resultado = self::$cnx->prepare($query);
+            $resultado->execute();
+            self::desconectar();
+            $materiales = $resultado->fetchAll();
+            foreach ($materiales as $encontrado) {
+                $material = new materialModel();
+                $material->setIdMateriales($encontrado['id_materiales_pk']);
+                $material->setNombreMaterial($encontrado['nombre_material']);
+                $material->setDescripcionMaterial($encontrado['descripcion_material']);
+                $material->setPrecioMaterial($encontrado['precio_material']);
+                $material->setExistenciasMaterial($encontrado['existencias_material']);
+                $material->setRutaImagenMaterial($encontrado['ruta_imagen_material']);
+                $material->setIdEstado($encontrado['id_estado_fk']);
+                $arr[] = $material; // Corregido: Añadir el objeto $material, no el array $materiales
+            }
+            return $arr;
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            return "Error ".$Exception->getCode().": ".$Exception->getMessage();
+        }
+    }
+    
 
     public function guardarMaterial() {
         $query = "INSERT INTO FIDE_MATERIALES_TB (nombre_material, descripcion_material, precio_material, existencias_material, ruta_imagen_material, id_estado_fk) VALUES (:nombre_material, :descripcion_material, :precio_material, :existencias_material, :ruta_imagen_material, :id_estado_fk)";
@@ -283,6 +310,6 @@ class materialModel extends Conexion
         }
     }
     
-    /*=====  End of Metodos de la Clase  ======*/  
+  
 }
 ?>

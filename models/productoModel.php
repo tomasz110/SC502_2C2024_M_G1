@@ -15,7 +15,7 @@ class productoModel extends Conexion
     private $existencias_producto = null;
     private $ruta_imagen_producto = null;
 
-    /*=====  End of Atributos de la Clase  ======*/
+
 
     /*=============================================
     =            Encapsuladores de la Clase       =
@@ -99,7 +99,7 @@ class productoModel extends Conexion
     {
         $this->ruta_imagen_producto = $ruta_imagen_producto;
     }
-    /*=====  End of Encapsuladores de la Clase  ======*/
+
 
     /*=============================================
     =            Metodos de la Clase              =
@@ -171,6 +171,32 @@ class productoModel extends Conexion
         }
     }
 
+    public function listarProductosActivos() {
+        $query = "SELECT * FROM FIDE_PRODUCTOS_TB WHERE id_estado_fk = 1"; // Filtra solo los activos
+        $arr = array();
+        try {
+            self::getConexion();
+            $resultado = self::$cnx->prepare($query);
+            $resultado->execute();
+            self::desconectar();
+            $productos = $resultado->fetchAll();
+            foreach ($productos as $encontrado) {
+                $producto = new productoModel();
+                $producto->setIdProducto($encontrado['id_producto_pk']);
+                $producto->setNombreProducto($encontrado['nombre_producto']);
+                $producto->setDescripcionProducto($encontrado['descripcion_producto']);
+                $producto->setPrecioProducto($encontrado['precio_producto']);
+                $producto->setExistenciasProducto($encontrado['existencias_producto']);
+                $producto->setRutaImagenProducto($encontrado['ruta_imagen_producto']);
+                $producto->setIdEstado($encontrado['id_estado_fk']);
+                $arr[] = $producto;
+            }
+            return $arr;
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            return "Error ".$Exception->getCode().": ".$Exception->getMessage();
+        }
+    }
     
     
     public function actualizarProducto() {
@@ -297,6 +323,6 @@ class productoModel extends Conexion
     
     
     
-    /*=====  End of Metodos de la Clase  ======*/  
+   
 }
 ?>
