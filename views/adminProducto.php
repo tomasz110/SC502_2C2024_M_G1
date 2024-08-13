@@ -9,12 +9,16 @@
     <link rel="stylesheet" href="plugins/toastr/toastr.css">
 </head>
 <body>
+<header>
+    <?php include 'header.php'; ?>
+</header>
+    <section>
     <div class="container mt-4">
         <!-- Formulario de creación de producto -->
         <div class="row">
             <div class="col-md-12" id="formulario_add">
                 <div class="card card-dark">
-                    <div class="card-header">
+                    <div class="card-header bg-success text-white">
                         <h3 class="card-title">Agregar un Producto</h3>
                     </div>
                     <div class="card-body">
@@ -52,8 +56,8 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <input type="submit" id="btnRegistrar" class="btn btn-success" value="Registrar">
-                                    <input type="reset" class="btn btn-warning" value="Borrar datos">
+                                    <input type="submit" id="btnRegistrar" class="btn btn-info" value="Registrar">
+                                    <input type="reset" class="btn btn-danger" value="Borrar datos">
                                 </div>
                             </div>
                         </form>
@@ -65,7 +69,7 @@
         <div class="row">
             <div class="col-md-12" id="formulario_update" style="display: none;">
                 <div class="card card-dark">
-                    <div class="card-header">
+                    <div class="card-header bg-success text-white">
                         <h3 class="card-title">Modificar un Producto</h3>
                     </div>
                     <div class="card-body">
@@ -117,12 +121,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-dark">
-                    <div class="card-header">
+                    <div class="card-header bg-success text-white">
                         <h3 class="card-title">Productos existentes</h3>
                     </div>
                     <div class="card-body p-0">
                         <table id="tbllistado" class="table table-striped table-bordered table-hover">
-                            <thead>
+                            <thead class="thead-dark">
                                 <tr>
                                     <th>ID</th>
                                     <th>Nombre</th>
@@ -155,6 +159,10 @@
             </div>
         </div>
     </div>
+    </section>
+    <footer>
+    <?php include 'footer.php'; ?>
+    </footer>
     <script src="plugins/jquery/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

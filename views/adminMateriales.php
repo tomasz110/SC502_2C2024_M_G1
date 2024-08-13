@@ -14,12 +14,14 @@
     <?php include 'header.php'; ?>
 </header>
 
+ 
 <section>
+    <div class="container mt-4">
     <div class="row">
         <!-- Formulario de creación de Material -->
         <div class="col-md-12" id="formulario_add">
             <div class="card card-dark">
-                <div class="card-header">
+                <div class="card-header bg-success text-white">
                     <h3 class="card-title">Agregar un Material</h3>
                 </div>
                 <div class="card-body">
@@ -66,8 +68,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <input type="submit" id="btnRegistrar" class="btn btn-success" value="Registrar">
-                                        <input type="reset" class="btn btn-warning" value="Borrar datos">
+                                        <input type="submit" id="btnRegistrar" class="btn btn-info" value="Registrar">
+                                        <input type="reset" class="btn btn-danger" value="Borrar datos">
                                     </div>
                                 </div>
                             </form>
@@ -77,11 +79,11 @@
                 </div>
             </div>
         </div>
-
+        
         <!-- Formulario de modificación de Materiales -->
         <div class="col-md-12" id="formulario_update">
             <div class="card card-dark">
-                <div class="card-header">
+                <div class="card-header bg-success text-white">
                     <h3 class="card-title">Modificar un Material</h3>
                 </div>
                 <div class="card-body">
@@ -131,11 +133,11 @@
                 </div>
             </div>
         </div>
-
+        
         <!-- Listado de Materiales -->
         <div class="col-md-12">
-            <div class="card card-dark">
-                <div class="card-header">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
                     <h3 class="card-title">Materiales existentes</h3>
                 </div>
                 <div class="card-body p-0">
@@ -143,7 +145,7 @@
                         <div class="col-md-1"></div>
                         <div class="col-md-10">
                             <table id="tbllistado" class="table table-striped table-bordered table-hover">
-                                <thead>
+                                <thead class="thead-dark">
                                     <th>ID</th>
                                     <th>Estado</th>
                                     <th>Nombre</th>
@@ -170,6 +172,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 
