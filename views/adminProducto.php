@@ -11,11 +11,6 @@
 <body>
 
 <section>
-
-
-</section>
-
-    <section>
     <div class="container mt-4">
         <!-- Formulario de creación de producto -->
         <div class="row">
@@ -91,7 +86,7 @@
                                     <label for="Eprecio">Precio</label>
                                     <input type="text" class="form-control" id="Eprecio" name="precio" required>
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md_4">
                                     <label for="Eexistencias">Existencias</label>
                                     <input type="number" class="form-control" id="Eexistencias" name="existencias" required>
                                 </div>
@@ -162,15 +157,16 @@
             </div>
         </div>
     </div>
-    </section>
-    
-    <script src="plugins/jquery/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="plugins/DataTables/datatables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
-    <script src="plugins/bootbox/bootbox.min.js"></script>
-    <script src="plugins/toastr/toastr.js"></script>
-    <script src="assets/js/producto.js"></script>
+</section>
+
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="plugins/DataTables/datatables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/bootbox/bootbox.min.js"></script>
+<script src="plugins/toastr/toastr.js"></script>
+<script src="assets/js/producto.js"></script>
+
 </body>
 </html>

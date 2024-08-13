@@ -1,17 +1,16 @@
-/*Función para limpiar los formularios*/
 function limpiarForms() {
     $('#producto_add').trigger('reset');
     $('#producto_update').trigger('reset');
 }
 
-/*Función para cancelación del uso de formulario de modificación*/
+
 function cancelarForm() {
     limpiarForms();
     $('#formulario_add').show();
     $('#formulario_update').hide();
 }
 
-/*Función para cargar el listado en el DataTable*/
+
 function listarProductosTodos() {
     tabla = $('#tbllistado').dataTable({
         aProcessing: true, // activamos el procesamiento de datatables
@@ -31,14 +30,13 @@ function listarProductosTodos() {
     });
 }
 
-/*Función Principal*/
+
 $(function () {
     $('#formulario_update').hide();
     listarProductosTodos();
 });
 
-/*CRUD*/
-/*Función para agregar un producto*/
+
 $('#producto_add').on('submit', function (event) {
     event.preventDefault();
     $('#btnRegistrar').prop('disabled', true);
@@ -75,8 +73,43 @@ $('#producto_add').on('submit', function (event) {
     });
 });
 
+// Función para cargar el listado de productos en las cards
+function listarProductosEnCards() {
+    $.ajax({
+        url: '../controllers/productoController.php?op=listar_para_tabla',
+        type: 'get',
+        dataType: 'json',
+        success: function(response) {
+            let cards = '';
+            response.aaData.forEach(function(producto) {
+                cards += `
+                    <div class="col-md-3 mb-4">
+                      <div class="card">
+                        <img src="${producto[5]}" class="card-img-top" alt="${producto[1]}" height="200">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">${producto[1]}</h5>
+                            <p class="card-text">${producto[2]}</p>
+                            <p class="card-text">Precio: $${producto[3]}</p>
+                            <p class="card-text">Existencias: ${producto[4]}</p>
+                            <button class="btn btn-primary">Añadir al carrito</button>
+                        </div>
+                    </div>
+                    </div>
+                `;
+            });
+            $('#listadoProductos').html(cards);
+        },
+        error: function(e) {
+            console.log(e.responseText);
+        }
+    });
+}
 
-/*Función para activación de productos*/
+// Función Principal
+$(function () {
+    listarProductosEnCards();
+});
+
 function activar(id) {
     bootbox.confirm('¿Está seguro de activar el producto?', function (result) {
         if (result) {
@@ -92,7 +125,7 @@ function activar(id) {
     });
 }
 
-/*Función para desactivación de productos*/
+
 function desactivar(id) {
     bootbox.confirm('¿Está seguro de desactivar el producto?', function (result) {
         if (result) {
@@ -108,7 +141,7 @@ function desactivar(id) {
     });
 }
 
-/*Habilitación de formulario de modificación al presionar el botón en la tabla*/
+
 $('#tbllistado tbody').on('click', 'button[id="modificarProducto"]', function () {
     var data = $('#tbllistado').DataTable().row($(this).parents('tr')).data();
     limpiarForms();
@@ -140,8 +173,8 @@ $('#producto_update').on('submit', function (event) {
                     console.log('Respuesta del servidor:', datos); // Agrega esta línea para depuración
                     if (datos.trim() == '1') {
                         toastr.success('Producto actualizado exitosamente');
-                        tabla.api().ajax.reload(); // Asegúrate de que `tabla` esté definido y tenga el método `api`
-                        limpiarForms(); // Asegúrate de que `limpiarForms` esté definido
+                        tabla.api().ajax.reload(); // Asegúrate de que tabla esté definido y tenga el método api
+                        limpiarForms(); // Asegúrate de que limpiarForms esté definido
                         $('#formulario_update').hide(); // Asegúrate de que los IDs sean correctos
                         $('#formulario_add').show(); // Asegúrate de que los IDs sean correctos
                     } else {
