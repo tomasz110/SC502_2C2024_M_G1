@@ -37,6 +37,7 @@ $(function () {
 });
 
 
+/* Función para agregar un material */
 $('#material_add').on('submit', function (event) {
     event.preventDefault();
     $('#btnRegistrar').prop('disabled', true);
@@ -49,24 +50,30 @@ $('#material_add').on('submit', function (event) {
         processData: false,
         success: function (datos) {
             var response = JSON.parse(datos);
-            if (response.error === undefined) {
-                toastr.success('Material registrado');
-                $('#material_add')[0].reset();
-                tabla.api().ajax.reload();
-            } else if (response.error === 'El producto ya existe') {
-                toastr.error('El material ya existe... Corrija e inténtelo nuevamente...');
-            } else {
-                toastr.error('Hubo un error al tratar de ingresar los datos: ' + response.error);
+            switch (response.error) {
+                case undefined:
+                    toastr.success('Material registrado');
+                    $('#material_add')[0].reset();
+                    tabla.api().ajax.reload();
+                    break;
+
+                case 'El material ya existe':
+                    toastr.error('El material ya existe... Corrija e inténtelo nuevamente...');
+                    break;
+
+                default:
+                    toastr.error('Hubo un error al tratar de ingresar los datos: ' + response.error);
+                    break;
             }
             $('#btnRegistrar').removeAttr('disabled');
-        }
-        ,
+        },
         error: function (jqXHR, textStatus, errorThrown) {
             toastr.error('Error: ' + textStatus + ' - ' + errorThrown);
             $('#btnRegistrar').removeAttr('disabled');
         }
     });
 });
+
 
 
 function activar(id) {
@@ -129,6 +136,7 @@ $('#material_update').on('submit', function (event) {
                 contentType: false,
                 processData: false,
                 success: function (datos) {
+                    console.log('Respuesta del servidor:', datos); // Agrega esta línea para depuración
                     if (datos.trim() == '1') {
                         toastr.success('Material actualizado exitosamente');
                         tabla.api().ajax.reload(); // Asegúrate de que tabla esté definido y tenga el método api
@@ -136,7 +144,7 @@ $('#material_update').on('submit', function (event) {
                         $('#formulario_update').hide(); // Asegúrate de que los IDs sean correctos
                         $('#formulario_add').show(); // Asegúrate de que los IDs sean correctos
                     } else {
-                        toastr.error('Error: No se pudieron actualizar los datos.');
+                        toastr.error('Error: No se pudieron actualizar los datos.Respuesta del servidor: ' + datos);
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {

@@ -13,7 +13,7 @@ switch ($_GET["op"]) {
                 "2" => $material->getDescripcionMaterial(),
                 "3" => number_format($material->getPrecioMaterial(), 2),
                 "4" => $material->getExistenciasMaterial(),
-                "5" => $material->getRutaImagenMateria(),
+                "5" => $material->getRutaImagenMaterial(),
                 "6" => ($material->getIdEstado() == 1) ? '<span class="label bg-success"> Activado </span>' : '<span class="label bg-danger"> Desactivado </span>',
                 "7" => '<button class="btn btn-warning" id="modificarMaterial">Modificar</button> ' .
                     ($material->getIdEstado() == 1 ? '<button class="btn btn-danger" onclick="desactivar('.$material->getIdMateriales().')">Desactivar</button>' : '<button class="btn btn-success" onclick="activar('.$material->getIdMateriales().')">Activar</button>')
@@ -41,7 +41,7 @@ switch ($_GET["op"]) {
         $material->setDescripcionMaterial($descripcion);
         $material->setPrecioMaterial($precio);
         $material->setExistenciasMaterial($existencias);
-        $material->setRutaImagenMateria($ruta_imagen);
+        $material->setRutaImagenMaterial($ruta_imagen);
         $material->setIdEstado($activo);
         $material->guardarMaterial();
 
@@ -96,12 +96,12 @@ switch ($_GET["op"]) {
         $material->setDescripcionMaterial($descripcion);
         $material->setPrecioMaterial($precio);
         $material->setExistenciasMaterial($existencias);
-        $material->setRutaImagenMateria($ruta_imagen);
+        $material->setRutaImagenMaterial($ruta_imagen);
         $material->setIdEstado($activo);
 
         $resultado = $material->actualizarMaterial();
 
-        if ($resultado === true) {
+        if ($material->actualizarMaterial()) {
             echo 1; // Indica éxito
         } else {
             echo 0; // Indica fallo

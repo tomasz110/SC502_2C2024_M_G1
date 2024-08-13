@@ -13,7 +13,7 @@ class materialModel extends Conexion
     private $descripcion_material = null;
     private $precio_material = null;
     private $existencias_material = null;
-    private $ruta_imagen_materia = null;
+    private $ruta_imagen_material = null;
 
     /*=====  End of Atributos de la Clase  ======*/
 
@@ -80,14 +80,14 @@ class materialModel extends Conexion
         $this->existencias_material = $existencias_material;
     }
 
-    public function getRutaImagenMateria()
+    public function getRutaImagenMaterial()
     {
-        return $this->ruta_imagen_materia;
+        return $this->ruta_imagen_material;
     }
 
-    public function setRutaImagenMateria($ruta_imagen_materia)
+    public function setRutaImagenMaterial($ruta_imagen_material)
     {
-        $this->ruta_imagen_materia = $ruta_imagen_materia;
+        $this->ruta_imagen_material = $ruta_imagen_material;
     }
     /*=====  End of Encapsuladores de la Clase  ======*/
 
@@ -119,7 +119,7 @@ class materialModel extends Conexion
                 $material->setDescripcionMaterial($encontrado['descripcion_material']);
                 $material->setPrecioMaterial($encontrado['precio_material']);
                 $material->setExistenciasMaterial($encontrado['existencias_material']);
-                $material->setRutaImagenMateria($encontrado['ruta_imagen_materia']);
+                $material->setRutaImagenMaterial($encontrado['ruta_imagen_material']);
                 $material->setIdEstado($encontrado['id_estado_fk']);
                 $arr[] = $material;
             }
@@ -131,7 +131,7 @@ class materialModel extends Conexion
     }
 
     public function guardarMaterial() {
-        $query = "INSERT INTO FIDE_MATERIALES_TB (nombre_material, descripcion_material, precio_material, existencias_material, ruta_imagen_materia, id_estado_fk) VALUES (:nombre_material, :descripcion_material, :precio_material, :existencias_material, :ruta_imagen_materia, :id_estado_fk)";
+        $query = "INSERT INTO FIDE_MATERIALES_TB (nombre_material, descripcion_material, precio_material, existencias_material, ruta_imagen_material, id_estado_fk) VALUES (:nombre_material, :descripcion_material, :precio_material, :existencias_material, :ruta_imagen_material, :id_estado_fk)";
         try {
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
@@ -141,7 +141,7 @@ class materialModel extends Conexion
             $descripcion_material = $this->getDescripcionMaterial();
             $precio_material = $this->getPrecioMaterial();
             $existencias_material = $this->getExistenciasMaterial();
-            $ruta_imagen_materia = $this->getRutaImagenMateria();
+            $ruta_imagen_material = $this->getRutaImagenMaterial();
             $id_estado_fk = $this->getIdEstado();
             
             // Usar bindParam con variables
@@ -149,7 +149,7 @@ class materialModel extends Conexion
             $resultado->bindParam(":descripcion_material", $descripcion_material, PDO::PARAM_STR);
             $resultado->bindParam(":precio_material", $precio_material, PDO::PARAM_STR);
             $resultado->bindParam(":existencias_material", $existencias_material, PDO::PARAM_INT);
-            $resultado->bindParam(":ruta_imagen_materia", $ruta_imagen_materia, PDO::PARAM_STR);
+            $resultado->bindParam(":ruta_imagen_material", $ruta_imagen_material, PDO::PARAM_STR);
             $resultado->bindParam(":id_estado_fk", $id_estado_fk, PDO::PARAM_INT);
     
             $resultado->execute();
@@ -167,7 +167,7 @@ class materialModel extends Conexion
                       descripcion_material=:descripcion_material, 
                       precio_material=:precio_material, 
                       existencias_material=:existencias_material, 
-                      ruta_imagen_materia=:ruta_imagen_materia, 
+                      ruta_imagen_material=:ruta_imagen_material, 
                       id_estado_fk=:id_estado_fk 
                   WHERE id_materiales_pk=:id_materiales_pk";
         try {
@@ -180,7 +180,7 @@ class materialModel extends Conexion
             $descripcion_material = $this->getDescripcionMaterial();
             $precio_material = $this->getPrecioMaterial();
             $existencias_material = $this->getExistenciasMaterial();
-            $ruta_imagen_materia = $this->getRutaImagenMateria();
+            $ruta_imagen_material = $this->getRutaImagenMaterial();
             $id_estado_fk = $this->getIdEstado();
     
             // Usar bindParam con variables
@@ -189,7 +189,7 @@ class materialModel extends Conexion
             $resultado->bindParam(":descripcion_material", $descripcion_material, PDO::PARAM_STR);
             $resultado->bindParam(":precio_material", $precio_material, PDO::PARAM_STR);
             $resultado->bindParam(":existencias_material", $existencias_material, PDO::PARAM_INT);
-            $resultado->bindParam(":ruta_imagen_materia", $ruta_imagen_materia, PDO::PARAM_STR);
+            $resultado->bindParam(":ruta_imagen_material", $ruta_imagen_material, PDO::PARAM_STR);
             $resultado->bindParam(":id_estado_fk", $id_estado_fk, PDO::PARAM_INT);
     
             $resultado->execute();
