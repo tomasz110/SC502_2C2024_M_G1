@@ -6,7 +6,11 @@
     <title>EcoSales</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="plugins/toastr/toastr.css">
 </head>
 <body>
     
@@ -30,133 +34,11 @@
 
 
   <section>
-    <div class="container">
-        <div class="row justify-content-center mt-5">
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="./assets/img/materiales/1.png" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Cartón Reciclado"/>
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-3">Cartón Reciclado</h5>
-                        <p class="card-text">Cartón reciclado de alta calidad.</p>
-                        <p class="card-text">Precio: $10 por kg | Existencias: 500 kg</p>
-                      
-                            <button class="btn btn-primary btn-block"type="button">Añadir al carrito</button>
-                        
-                    </div>
-                </div>
-            </div>
-
-           
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="./assets/img/materiales/2.png" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Latas Recicladas"/>
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-3">Latas Recicladas</h5>
-                        <p class="card-text">Latas de aluminio recicladas.</p>
-                        <p class="card-text">Precio: $5 por kg | Existencias: 300 kg</p>
-                      
-                           
-                            <button class="btn btn-primary btn-block" type="button">Añadir al carrito</button>
-                       
-                    </div>
-                </div>
-            </div>
-
-            
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="./assets/img/materiales/3.png" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Plástico Reciclado"/>
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-3">Plástico Reciclado</h5>
-                        <p class="card-text">Plástico reciclado de diferentes tipos.</p>
-                        <p class="card-text">Precio: $8 por kg | Existencias: 200 kg</p>
-                       
-                           
-                            <button class="btn btn-primary btn-block" type="button">Añadir al carrito</button>
-                        
-                    </div>
-                </div>
-            </div>
-
-          
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="./assets/img/materiales/4.png" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Vidrio Reciclado"/>
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-3">Vidrio Reciclado</h5>
-                        <p class="card-text">Vidrio reciclado.</p>
-                        <p class="card-text">Precio: $7 por kg | Existencias: 400 kg</p>
-                  
-                       
-                            <button class="btn btn-primary btn-block" type="button">Añadir al carrito</button>
-                    
-                    </div>
-                </div>
-            </div>
-
-          
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="./assets/img/materiales/5.png" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Papel Reciclado"/>
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-3">Papel Reciclado</h5>
-                        <p class="card-text">Papel reciclado, ideal para impresiones y manualidades.</p>
-                        <p class="card-text">Precio: $6 por kg | Existencias: 600 kg</p>
-                     
-                           
-                            <button class="btn btn-primary btn-block" type="button">Añadir al carrito</button>
-                      
-                    </div>
-                </div>
-            </div>
-
-          
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="./assets/img/materiales/6.png" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Metales Reciclados"/>
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-3">Metales Reciclados</h5>
-                        <p class="card-text">Metales reciclados, incluyendo hierro y cobre.</p>
-                        <p class="card-text">Precio: $12 por kg | Existencias: 150 kg</p>
-                     
-                            
-                            <button class="btn btn-primary btn-block" type="button">Añadir al carrito</button>
-                        
-                    </div>
-                </div>
-            </div>
-
-            
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="./assets/img/materiales/7.png" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Textiles Reciclados"/>
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-3">Textiles Reciclados</h5>
-                        <p class="card-text">Textiles reciclados de diferentes tipos y colores.</p>
-                        <p class="card-text">Precio: $4 por kg | Existencias: 350 kg</p>
-                       
-                            
-                            <button class="btn btn-primary btn-block" type="button">Añadir al carrito</button>
-                      
-                    </div>
-                </div>
-            </div>
-
-          
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="./assets/img/materiales/8.png" class="card-img-top" style="object-fit: cover; height: 250px;" alt="Electrónicos Reciclados"/>
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-3">Electrónicos Reciclados</h5>
-                        <p class="card-text">Componentes electrónicos de todo tipo reciclados.</p>
-                        <p class="card-text">Precio: $15 por kg | Existencias: 100 kg</p>
-                     
-                           
-                            <button class="btn btn-primary btn-block" type="button">Añadir al carrito</button>
-                        
-                    </div>
-                </div>
-            </div>
+  <div class="container">
+        
+        <!-- Sección de Tarjetas de Productos -->
+        <div class="row justify-content-center mt-5" id="listadoMateriales">
+            <!-- Aquí se insertarán las tarjetas generadas por JavaScript -->
         </div>
     </div>
 </section>
@@ -176,8 +58,14 @@
   </footer>
  
 
-
+  <script src="plugins/jquery/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="plugins/DataTables/datatables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/bootbox/bootbox.min.js"></script>
+<script src="plugins/toastr/toastr.js"></script>
+<script src="assets/js/material.js"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </html>

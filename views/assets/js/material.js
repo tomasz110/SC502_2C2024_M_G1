@@ -36,6 +36,42 @@ $(function () {
     listarMaterialesTodos();
 });
 
+function listarMaterialesEnCards() {
+    $.ajax({
+        url: '../controllers/materialController.php?op=listar_para_tabla',
+        type: 'get',
+        dataType: 'json',
+        success: function(response) {
+            let cards = '';
+            response.aaData.forEach(function(material) {
+                cards += `
+                    <div class="col-md-3 mb-4">
+                      <div class="card">
+                        <img src="${material[5]}" class="card-img-top" alt="${material[1]}" height="200">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">${material[1]}</h5>
+                            <p class="card-text">${material[2]}</p>
+                            <p class="card-text">Precio: $${material[3]}</p>
+                            <p class="card-text">Existencias: ${material[4]}</p>
+                            <button class="btn btn-primary">Añadir al carrito</button>
+                        </div>
+                    </div>
+                    </div>
+                `;
+            });
+            $('#listadoMateriales').html(cards);
+        },
+        error: function(e) {
+            console.log(e.responseText);
+        }
+    });
+}
+
+// Función Principal
+$(function () {
+    listarMaterialesEnCards();
+});
+
 
 /* Función para agregar un material */
 $('#material_add').on('submit', function (event) {

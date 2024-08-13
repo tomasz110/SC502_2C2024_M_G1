@@ -9,7 +9,13 @@
     <link rel="stylesheet" href="plugins/toastr/toastr.css">
 </head>
 <body>
+<header>
+  <?php
+    include 'headerAdmin.php';
+    
+    ?>
 
+  </header>
 <section>
     <div class="container mt-4">
         <!-- Formulario de creación de producto -->
