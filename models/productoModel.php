@@ -8,7 +8,6 @@ class productoModel extends Conexion
     =============================================*/
     protected static $cnx;
     private $id_producto_pk = null;
-    private $id_emprendedor_fk = null;
     private $id_estado_fk = null;
     private $nombre_producto = null;
     private $descripcion_producto = null;
@@ -256,6 +255,7 @@ class productoModel extends Conexion
             return $error; // Retorna el mensaje de error en caso de excepción
         }
     }
+    
     public function activar() {
         $id_producto_pk = $this->getIdProducto();
         $query = "UPDATE FIDE_PRODUCTOS_TB SET id_estado_fk = 1 WHERE id_producto_pk = :id_producto_pk";

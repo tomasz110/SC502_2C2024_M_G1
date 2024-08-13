@@ -4,269 +4,285 @@ require_once '../config/Conexion.php';
 class materialModel extends Conexion
 {
     /*=============================================
-	=            Atributos de la Clase            =
-	=============================================*/
-        protected static $cnx;
-		private $id_producto_pk = null;
-		private $id_emprendedor_fk = null;
-		private $id_estado_fk = null;
-		private $nombre_producto = null;
-		private $descripcion_producto = null;
-        private $precio_producto = null;
-		private $existencias_producto = null;
-		private $ruta_imagen_producto = null;
-	/*=====  End of Atributos de la Clase  ======*/
+    =            Atributos de la Clase            =
+    =============================================*/
+    protected static $cnx;
+    private $id_materiales_pk = null;
+    private $id_estado_fk = null;
+    private $nombre_material = null;
+    private $descripcion_material = null;
+    private $precio_material = null;
+    private $existencias_material = null;
+    private $ruta_imagen_materia = null;
+
+    /*=====  End of Atributos de la Clase  ======*/
 
     /*=============================================
-	=            Contructores de la Clase         =
-	=============================================*/
-        public function __construct(){}
-    /*=====  End of Contructores de la Clase  ======*/
-
-    /*=============================================
-	=            Encapsuladores de la Clase       =
-	=============================================*/
-    public function getIdProductoPk()
+    =            Encapsuladores de la Clase       =
+    =============================================*/
+    public function getIdMateriales()
     {
-        return $this->id_producto_pk;
+        return $this->id_materiales_pk;
     }
 
-    public function setIdProductoPk($id_producto_pk)
+    public function setIdMateriales($id_materiales_pk)
     {
-        $this->id_producto_pk = $id_producto_pk;
+        $this->id_materiales_pk = $id_materiales_pk;
     }
 
-    public function getIdEmprendedorFk()
-    {
-        return $this->id_emprendedor_fk;
-    }
-
-    public function setIdEmprendedorFk($id_emprendedor_fk)
-    {
-        $this->id_emprendedor_fk = $id_emprendedor_fk;
-    }
-
-    public function getIdEstadoFk()
+    public function getIdEstado()
     {
         return $this->id_estado_fk;
     }
 
-    public function setIdEstadoFk($id_estado_fk)
+    public function setIdEstado($id_estado_fk)
     {
         $this->id_estado_fk = $id_estado_fk;
     }
 
-    public function getNombreProducto()
+    public function getNombreMaterial()
     {
-        return $this->nombre_producto;
+        return $this->nombre_material;
     }
 
-    public function setNombreProducto($nombre_producto)
+    public function setNombreMaterial($nombre_material)
     {
-        $this->nombre_producto = $nombre_producto;
+        $this->nombre_material = $nombre_material;
     }
 
-    public function getDescripcionProducto()
+    public function getDescripcionMaterial()
     {
-        return $this->descripcion_producto;
+        return $this->descripcion_material;
     }
 
-    public function setDescripcionProducto($descripcion_producto)
+    public function setDescripcionMaterial($descripcion_material)
     {
-        $this->descripcion_producto = $descripcion_producto;
+        $this->descripcion_material = $descripcion_material;
     }
 
-    public function getPrecioProducto()
+    public function getPrecioMaterial()
     {
-        return $this->precio_producto;
+        return $this->precio_material;
     }
 
-    public function setPrecioProducto($precio_producto)
+    public function setPrecioMaterial($precio_material)
     {
-        $this->precio_producto = $precio_producto;
+        $this->precio_material = $precio_material;
     }
 
-    public function getExistenciasProducto()
+    public function getExistenciasMaterial()
     {
-        return $this->existencias_producto;
+        return $this->existencias_material;
     }
 
-    public function setExistenciasProducto($existencias_producto)
+    public function setExistenciasMaterial($existencias_material)
     {
-        $this->existencias_producto = $existencias_producto;
+        $this->existencias_material = $existencias_material;
     }
 
-    public function getRutaImagenProducto()
+    public function getRutaImagenMateria()
     {
-        return $this->ruta_imagen_producto;
+        return $this->ruta_imagen_materia;
     }
 
-    public function setRutaImagenProducto($ruta_imagen_producto)
+    public function setRutaImagenMateria($ruta_imagen_materia)
     {
-        $this->ruta_imagen_producto = $ruta_imagen_producto;
+        $this->ruta_imagen_materia = $ruta_imagen_materia;
     }
-
     /*=====  End of Encapsuladores de la Clase  ======*/
 
     /*=============================================
-	=            Métodos de la Clase              =
-	=============================================*/
-        public static function getConexion(){
-            self::$cnx = Conexion::conectar();
-        }
+    =            Metodos de la Clase              =
+    =============================================*/
 
-        public static function desconectar(){
-            self::$cnx = null;
-        }
+    public static function getConexion(){
+        self::$cnx = Conexion::conectar();
+    }
 
-        public function listarTodosDb(){
-            $query = "SELECT * FROM fide_productos_tb";
-            $arr = array();
-            try {
-                self::getConexion();
-                $resultado = self::$cnx->prepare($query);
-                $resultado->execute();
-                self::desconectar();
-                foreach ($resultado->fetchAll() as $encontrado) {
-                    $producto = new materialModel();
-                    $producto->setIdProductoPk($encontrado['id_producto_pk']);
-                    $producto->setIdEmprendedorFk($encontrado['id_emprendedor_fk']);
-                    $producto->setIdEstadoFk($encontrado['id_estado_fk']);
-                    $producto->setNombreProducto($encontrado['nombre_producto']);
-                    $producto->setDescripcionProducto($encontrado['descripcion_producto']);
-                    $producto->setPrecioProducto($encontrado['precio_producto']);
-                    $producto->setExistenciasProducto($encontrado['existencias_producto']);
-                    $producto->setRutaImagenProducto($encontrado['ruta_imagen_producto']);
-                    $arr[] = $producto;
-                }
-                return $arr;
-            } catch (PDOException $Exception) {
-                self::desconectar();
-                $error = "Error ".$Exception->getCode().": ".$Exception->getMessage();
-                return json_encode($error);
+    public static function desconectar(){
+        self::$cnx = null;
+    }
+
+    public function listarTodosMateriales(){
+        $query = "SELECT * FROM FIDE_MATERIALES_TB";
+        $arr = array();
+        try {
+            self::getConexion();
+            $resultado = self::$cnx->prepare($query);
+            $resultado->execute();
+            self::desconectar();
+            $materiales = $resultado->fetchAll();
+            foreach ($materiales as $encontrado) {
+                $material = new materialModel();
+                $material->setIdMateriales($encontrado['id_materiales_pk']);
+                $material->setNombreMaterial($encontrado['nombre_material']);
+                $material->setDescripcionMaterial($encontrado['descripcion_material']);
+                $material->setPrecioMaterial($encontrado['precio_material']);
+                $material->setExistenciasMaterial($encontrado['existencias_material']);
+                $material->setRutaImagenMateria($encontrado['ruta_imagen_materia']);
+                $material->setIdEstado($encontrado['id_estado_fk']);
+                $arr[] = $material;
             }
+            return $arr;
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            return "Error ".$Exception->getCode().": ".$Exception->getMessage();
         }
+    }
 
-        public function guardarEnDb(){
-            $query = "INSERT INTO fide_productos_tb(id_emprendedor_fk, id_estado_fk, nombre_producto, descripcion_producto, precio_producto, existencias_producto, ruta_imagen_producto)
-             VALUES (:id_emprendedor_fk, :id_estado_fk, :nombre_producto, :descripcion_producto, :precio_producto, :existencias_producto, :ruta_imagen_producto)";
-            try {
-                self::getConexion();
-                $id_emprendedor_fk = $this->getIdEmprendedorFk();
-                $id_estado_fk = $this->getIdEstadoFk();
-                $nombre_producto = $this->getNombreProducto();
-                $descripcion_producto = $this->getDescripcionProducto();
-                $precio_producto = $this->getPrecioProducto();
-                $existencias_producto = $this->getExistenciasProducto();
-                $ruta_imagen_producto = $this->getRutaImagenProducto();
+    public function guardarMaterial() {
+        $query = "INSERT INTO FIDE_MATERIALES_TB (nombre_material, descripcion_material, precio_material, existencias_material, ruta_imagen_materia, id_estado_fk) VALUES (:nombre_material, :descripcion_material, :precio_material, :existencias_material, :ruta_imagen_materia, :id_estado_fk)";
+        try {
+            self::getConexion();
+            $resultado = self::$cnx->prepare($query);
+            
+            // Asignar valores a variables
+            $nombre_material = $this->getNombreMaterial();
+            $descripcion_material = $this->getDescripcionMaterial();
+            $precio_material = $this->getPrecioMaterial();
+            $existencias_material = $this->getExistenciasMaterial();
+            $ruta_imagen_materia = $this->getRutaImagenMateria();
+            $id_estado_fk = $this->getIdEstado();
+            
+            // Usar bindParam con variables
+            $resultado->bindParam(":nombre_material", $nombre_material, PDO::PARAM_STR);
+            $resultado->bindParam(":descripcion_material", $descripcion_material, PDO::PARAM_STR);
+            $resultado->bindParam(":precio_material", $precio_material, PDO::PARAM_STR);
+            $resultado->bindParam(":existencias_material", $existencias_material, PDO::PARAM_INT);
+            $resultado->bindParam(":ruta_imagen_materia", $ruta_imagen_materia, PDO::PARAM_STR);
+            $resultado->bindParam(":id_estado_fk", $id_estado_fk, PDO::PARAM_INT);
+    
+            $resultado->execute();
+            self::desconectar();
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            // Devuelve un mensaje de error detallado
+            echo json_encode(array("error" => $Exception->getMessage()));
+        }
+    }
 
-                $resultado = self::$cnx->prepare($query);
-                $resultado->bindParam(":id_emprendedor_fk", $id_emprendedor_fk, PDO::PARAM_INT);
-                $resultado->bindParam(":id_estado_fk", $id_estado_fk, PDO::PARAM_INT);
-                $resultado->bindParam(":nombre_producto", $nombre_producto, PDO::PARAM_STR);
-                $resultado->bindParam(":descripcion_producto", $descripcion_producto, PDO::PARAM_STR);
-                $resultado->bindParam(":precio_producto", $precio_producto, PDO::PARAM_STR);
-                $resultado->bindParam(":existencias_producto", $existencias_producto, PDO::PARAM_INT);
-                $resultado->bindParam(":ruta_imagen_producto", $ruta_imagen_producto, PDO::PARAM_STR);
-                $resultado->execute();
-                self::desconectar();
-            } catch (PDOException $Exception) {
-                self::desconectar();
-                $error = "Error ".$Exception->getCode().": ".$Exception->getMessage();
-                return json_encode($error);
+    public function actualizarMaterial() {
+        $query = "UPDATE FIDE_MATERIALES_TB 
+                  SET nombre_material=:nombre_material, 
+                      descripcion_material=:descripcion_material, 
+                      precio_material=:precio_material, 
+                      existencias_material=:existencias_material, 
+                      ruta_imagen_materia=:ruta_imagen_materia, 
+                      id_estado_fk=:id_estado_fk 
+                  WHERE id_materiales_pk=:id_materiales_pk";
+        try {
+            self::getConexion();
+            $resultado = self::$cnx->prepare($query);
+    
+            // Asignar valores a variables
+            $id_materiales_pk = $this->getIdMateriales();
+            $nombre_material = $this->getNombreMaterial();
+            $descripcion_material = $this->getDescripcionMaterial();
+            $precio_material = $this->getPrecioMaterial();
+            $existencias_material = $this->getExistenciasMaterial();
+            $ruta_imagen_materia = $this->getRutaImagenMateria();
+            $id_estado_fk = $this->getIdEstado();
+    
+            // Usar bindParam con variables
+            $resultado->bindParam(":id_materiales_pk", $id_materiales_pk, PDO::PARAM_INT);
+            $resultado->bindParam(":nombre_material", $nombre_material, PDO::PARAM_STR);
+            $resultado->bindParam(":descripcion_material", $descripcion_material, PDO::PARAM_STR);
+            $resultado->bindParam(":precio_material", $precio_material, PDO::PARAM_STR);
+            $resultado->bindParam(":existencias_material", $existencias_material, PDO::PARAM_INT);
+            $resultado->bindParam(":ruta_imagen_materia", $ruta_imagen_materia, PDO::PARAM_STR);
+            $resultado->bindParam(":id_estado_fk", $id_estado_fk, PDO::PARAM_INT);
+    
+            $resultado->execute();
+            self::desconectar();
+            return true; // Añadido para indicar éxito
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            return "Error ".$Exception->getCode().": ".$Exception->getMessage();
+        }
+    }
+
+    public function eliminarMaterial(){
+        $query = "DELETE FROM FIDE_MATERIALES_TB WHERE id_materiales_pk=:id_materiales_pk";
+        try {
+            self::getConexion();
+            $resultado = self::$cnx->prepare($query);
+            $resultado->bindParam(":id_materiales_pk", $this->getIdMateriales(), PDO::PARAM_INT);
+            $resultado->execute();
+            self::desconectar();
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            return "Error ".$Exception->getCode().": ".$Exception->getMessage();
+        }
+    }
+
+    public function verificarExistenciaDb() {
+        $query = "SELECT * FROM FIDE_MATERIALES_TB WHERE nombre_material = :nombre_material";
+        try {
+            self::getConexion();
+            $resultado = self::$cnx->prepare($query);
+            
+            // Obtener el nombre del material desde la instancia de la clase
+            $nombre_material = $this->getNombreMaterial();
+            
+            // Vincular el parámetro
+            $resultado->bindParam(":nombre_material", $nombre_material, PDO::PARAM_STR);
+            
+            $resultado->execute();
+            self::desconectar();
+            
+            $encontrado = false;
+            // Verificar si se encontraron registros
+            if ($resultado->rowCount() > 0) {
+                $encontrado = true;
             }
+            
+            return $encontrado; // Devuelve true si existe, false si no
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            $error = "Error ".$Exception->getCode().": ".$Exception->getMessage();
+            return $error; // Retorna el mensaje de error en caso de excepción
         }
+    }
+    
 
-        public function actualizarProducto(){
-            $query = "UPDATE fide_productos_tb SET id_emprendedor_fk=:id_emprendedor_fk, id_estado_fk=:id_estado_fk, nombre_producto=:nombre_producto, descripcion_producto=:descripcion_producto, precio_producto=:precio_producto, existencias_producto=:existencias_producto, ruta_imagen_producto=:ruta_imagen_producto
-            WHERE id_producto_pk=:id_producto_pk";
-            try {
-                self::getConexion();
-                $id_producto_pk = $this->getIdMaterialesPk();
-                $id_emprendedor_fk = $this->getIdEmprendedorFk();
-                $id_estado_fk = $this->getIdEstadoFk();
-                $nombre_producto = $this->getNombreProducto();
-                $descripcion_producto = $this->getDescripcionProducto();
-                $precio_producto = $this->getPrecioProducto();
-                $existencias_producto = $this->getExistenciasProducto();
-                $ruta_imagen_producto = $this->getRutaImagenProducto();
-                
-
-                $resultado = self::$cnx->prepare($query);
-                $resultado->bindParam(":id_producto_pk", $id_producto_pk, PDO::PARAM_INT);
-                $resultado->bindParam(":id_emprendedor_fk", $id_emprendedor_fk, PDO::PARAM_INT);
-                $resultado->bindParam(":id_estado_fk", $id_estado_fk, PDO::PARAM_INT);
-                $resultado->bindParam(":nombre_producto", $nombre_producto, PDO::PARAM_STR);
-                $resultado->bindParam(":descripcion_producto", $descripcion_producto, PDO::PARAM_STR);
-                $resultado->bindParam(":precio_producto", $precio_producto, PDO::PARAM_STR);
-                $resultado->bindParam(":existencias_producto", $existencias_producto, PDO::PARAM_INT);
-                $resultado->bindParam(":ruta_imagen_producto", $ruta_imagen_producto, PDO::PARAM_STR);
-                $resultado->execute();
-                self::desconectar();
-                return $resultado->rowCount();
-            } catch (PDOException $Exception) {
-                self::desconectar();
-                $error = "Error ".$Exception->getCode().": ".$Exception->getMessage();
-                return $error;
-            }
+    public function activar() {
+        $id_materiales_pk = $this->getIdMateriales();
+        $query = "UPDATE FIDE_MATERIALES_TB SET id_estado_fk = 1 WHERE id_materiales_pk = :id_materiales_pk";
+        try {
+            self::getConexion();
+            $resultado = self::$cnx->prepare($query);
+            $resultado->bindParam(":id_materiales_pk", $id_materiales_pk, PDO::PARAM_INT);
+            self::$cnx->beginTransaction();
+            $resultado->execute();
+            self::$cnx->commit();
+            self::desconectar();
+            return $resultado->rowCount(); // Devuelve el número de filas afectadas
+        } catch (PDOException $Exception) {
+            self::$cnx->rollBack();
+            self::desconectar();
+            return "Error ".$Exception->getCode().": ".$Exception->getMessage();
         }
-
-        public function llenarCampos($id_producto_pk){
-            $query = "SELECT * FROM fide_productos_tb WHERE id_producto_pk=:id_producto_pk";
-            try {
-                self::getConexion();
-                $resultado = self::$cnx->prepare($query);
-                $resultado->bindParam(":id_producto_pk", $id_producto_pk, PDO::PARAM_INT);
-                $resultado->execute();
-                self::desconectar();
-                foreach ($resultado->fetchAll() as $encontrado) {
-                    $this->setIdProductoPk($encontrado['id_producto_pk']);
-                    $this->setIdEmprendedorFk($encontrado['id_emprendedor_fk']);
-                    $this->setIdEstadoFk($encontrado['id_estado_fk']);
-                    $this->setNombreProducto($encontrado['nombre_producto']);
-                    $this->setDescripcionProducto($encontrado['descripcion_producto']);
-                    $this->setPrecioProducto($encontrado['precio_producto']);
-                    $this->setExistenciasProducto($encontrado['existencias_producto']);
-                    $this->setRutaImagenProducto($encontrado['ruta_imagen_producto']);
-                }
-            } catch (PDOException $Exception) {
-                self::desconectar();
-                $error = "Error ".$Exception->getCode().": ".$Exception->getMessage();
-                return json_encode($error);
-            }
+    }
+    
+    public function desactivar() {
+        $id_materiales_pk = $this->getIdMateriales();
+        $query = "UPDATE FIDE_MATERIALES_TB SET id_estado_fk = 2 WHERE id_materiales_pk = :id_materiales_pk";
+        try {
+            self::getConexion();
+            $resultado = self::$cnx->prepare($query);
+            $resultado->bindParam(":id_materiales_pk", $id_materiales_pk, PDO::PARAM_INT);
+            self::$cnx->beginTransaction();
+            $resultado->execute();
+            self::$cnx->commit();
+            self::desconectar();
+            return $resultado->rowCount(); // Devuelve el número de filas afectadas
+        } catch (PDOException $Exception) {
+            self::$cnx->rollBack();
+            self::desconectar();
+            return "Error ".$Exception->getCode().": ".$Exception->getMessage();
         }
-
-        public function verificarExistenciaDb() {
-            $query = "SELECT id_producto_pk, id_emprendedor_fk, id_estado_fk, nombre_producto, descripcion_producto, precio_producto, existencias_producto, ruta_imagen_producto 
-                      FROM fide_productos_tb 
-                      WHERE nombre_producto = :nombre_producto AND id_estado_fk = 1";
-            try {
-                self::getConexion();
-                $resultado = self::$cnx->prepare($query);		
-                $nombre_producto = $this->getNombreProducto();		
-                $resultado->bindParam(":nombre_producto", $nombre_producto, PDO::PARAM_STR);
-                $resultado->execute();
-                self::desconectar();
-                $encontrado = false;
-                $arr = array();
-                foreach ($resultado->fetchAll() as $reg) {
-                    $arr['id_producto_pk'] = $reg['id_producto_pk'];
-                    $arr['id_emprendedor_fk'] = $reg['id_emprendedor_fk'];
-                    $arr['id_estado_fk'] = $reg['id_estado_fk'];
-                    $arr['nombre_producto'] = $reg['nombre_producto'];
-                    $arr['descripcion_producto'] = $reg['descripcion_producto'];
-                    $arr['precio_producto'] = $reg['precio_producto'];
-                    $arr['existencias_producto'] = $reg['existencias_producto'];
-                    $arr['ruta_imagen_producto'] = $reg['ruta_imagen_producto'];
-                    $encontrado = true;
-                }
-                return $encontrado ? $arr : null;
-            } catch (PDOException $Exception) {
-                self::desconectar();
-                $error = "Error ".$Exception->getCode().": ".$Exception->getMessage();
-                return $error;
-            }
-        }
-    /*=====  End of Métodos de la Clase  ======*/
+    }
+    
+    /*=====  End of Metodos de la Clase  ======*/  
 }
 ?>
