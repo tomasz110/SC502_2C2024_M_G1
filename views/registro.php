@@ -14,7 +14,7 @@
 
 <body>
     <header>
-        <?php include 'header.php'; ?>
+        <?php include 'headerInicioSesion.php'; ?>
     </header> 
     <section id="crearCuenta">
         <div class="container mt-5">

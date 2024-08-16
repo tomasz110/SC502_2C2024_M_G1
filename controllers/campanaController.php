@@ -43,14 +43,15 @@ switch ($_GET["op"]) {
         $campana->setRutaImagenCampana($ruta_imagen);
         $campana->setRutaMapaCampana($ruta_mapa);
         $campana->setIdEstadoFk($activo);
-        $campana->guardarEmprendedor(); 
 
-        if ($campana->verificarExistenciaDb()) {
-            echo 1; 
-        } else {
-            echo 3; 
-        }
-        break;
+       // Verificar si el usuario ya existe
+       if ($campana->verificarExistenciaDb()) {
+        echo 3; // Usuario ya existe
+    } else {
+        $campana->guardarEmprendedor(); 
+        echo 1; // Usuario registrado exitosamente
+    }
+    break;
 
     case 'activar':
         $campana = new campanaModel();

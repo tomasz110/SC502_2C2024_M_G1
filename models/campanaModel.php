@@ -197,17 +197,10 @@ class campanaModel extends Conexion{
             $resultado->execute();
             self::desconectar();
             
-            $encontrado = false;
-            // Verificar si se encontraron registros
-            if ($resultado->rowCount() > 0) {
-                $encontrado = true;
-            }
-            
-            return $encontrado; // Devuelve true si existe, false si no
+            return $resultado->rowCount() > 0; // Devuelve true si existe, false si no
         } catch (PDOException $Exception) {
             self::desconectar();
-            $error = "Error ".$Exception->getCode().": ".$Exception->getMessage();
-            return $error; // Retorna el mensaje de error en caso de excepción
+            return false; // O maneja el error de acuerdo a tus necesidades
         }
     }
     

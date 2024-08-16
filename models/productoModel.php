@@ -12,6 +12,7 @@ class productoModel extends Conexion
     private $nombre_producto = null;
     private $descripcion_producto = null;
     private $precio_producto = null;
+    private $id_emprendedor_fk  = null;
     private $existencias_producto = null;
     private $ruta_imagen_producto = null;
 
@@ -130,6 +131,7 @@ class productoModel extends Conexion
                 $producto->setPrecioProducto($encontrado['precio_producto']);
                 $producto->setExistenciasProducto($encontrado['existencias_producto']);
                 $producto->setRutaImagenProducto($encontrado['ruta_imagen_producto']);
+                $producto->setIdEmprendedor($encontrado['id_emprendedor_fk']);
                 $producto->setIdEstado($encontrado['id_estado_fk']);
                 $arr[] = $producto;
             }
@@ -141,7 +143,7 @@ class productoModel extends Conexion
     }
 
     public function guardarProducto() {
-        $query = "INSERT INTO FIDE_PRODUCTOS_TB (nombre_producto, descripcion_producto, precio_producto, existencias_producto, ruta_imagen_producto, id_estado_fk) VALUES (:nombre_producto, :descripcion_producto, :precio_producto, :existencias_producto, :ruta_imagen_producto, :id_estado_fk)";
+        $query = "INSERT INTO FIDE_PRODUCTOS_TB (nombre_producto, descripcion_producto, precio_producto, existencias_producto, ruta_imagen_producto, id_emprendedor_fk, id_estado_fk) VALUES (:nombre_producto, :descripcion_producto, :precio_producto, :existencias_producto, :ruta_imagen_producto, :id_emprendedor_fk, :id_estado_fk)";
         try {
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
@@ -152,6 +154,7 @@ class productoModel extends Conexion
             $precio_producto = $this->getPrecioProducto();
             $existencias_producto = $this->getExistenciasProducto();
             $ruta_imagen_producto = $this->getRutaImagenProducto();
+            $id_emprendedor_fk = $this->getIdEmprendedor();
             $id_estado_fk = $this->getIdEstado();
             
             // Usar bindParam con variables
@@ -160,6 +163,7 @@ class productoModel extends Conexion
             $resultado->bindParam(":precio_producto", $precio_producto, PDO::PARAM_STR);
             $resultado->bindParam(":existencias_producto", $existencias_producto, PDO::PARAM_INT);
             $resultado->bindParam(":ruta_imagen_producto", $ruta_imagen_producto, PDO::PARAM_STR);
+            $resultado->bindParam(":id_emprendedor_fk", $id_emprendedor_fk, PDO::PARAM_INT);
             $resultado->bindParam(":id_estado_fk", $id_estado_fk, PDO::PARAM_INT);
     
             $resultado->execute();
@@ -188,6 +192,7 @@ class productoModel extends Conexion
                 $producto->setPrecioProducto($encontrado['precio_producto']);
                 $producto->setExistenciasProducto($encontrado['existencias_producto']);
                 $producto->setRutaImagenProducto($encontrado['ruta_imagen_producto']);
+                $producto->setIdEmprendedor($encontrado['id_emprendedor_fk']);
                 $producto->setIdEstado($encontrado['id_estado_fk']);
                 $arr[] = $producto;
             }
@@ -205,7 +210,8 @@ class productoModel extends Conexion
                       descripcion_producto=:descripcion_producto, 
                       precio_producto=:precio_producto, 
                       existencias_producto=:existencias_producto, 
-                      ruta_imagen_producto=:ruta_imagen_producto, 
+                      ruta_imagen_producto=:ruta_imagen_producto,
+                      id_emprendedor_fk=:id_emprendedor_fk,
                       id_estado_fk=:id_estado_fk 
                   WHERE id_producto_pk=:id_producto_pk";
         try {
@@ -219,6 +225,7 @@ class productoModel extends Conexion
             $precio_producto = $this->getPrecioProducto();
             $existencias_producto = $this->getExistenciasProducto();
             $ruta_imagen_producto = $this->getRutaImagenProducto();
+            $id_emprendedor_fk = $this->getIdEmprendedor();
             $id_estado_fk = $this->getIdEstado();
     
             // Usar bindParam con variables
@@ -228,6 +235,7 @@ class productoModel extends Conexion
             $resultado->bindParam(":precio_producto", $precio_producto, PDO::PARAM_STR);
             $resultado->bindParam(":existencias_producto", $existencias_producto, PDO::PARAM_INT);
             $resultado->bindParam(":ruta_imagen_producto", $ruta_imagen_producto, PDO::PARAM_STR);
+            $resultado->bindParam(":id_emprendedor_fk", $id_emprendedor_fk, PDO::PARAM_INT);
             $resultado->bindParam(":id_estado_fk", $id_estado_fk, PDO::PARAM_INT);
     
             $resultado->execute();
@@ -240,45 +248,28 @@ class productoModel extends Conexion
     }
     
 
-    public function eliminarProducto(){
-        $query = "DELETE FROM FIDE_PRODUCTOS_TB WHERE id_producto_pk=:id_producto_pk";
-        try {
-            self::getConexion();
-            $resultado = self::$cnx->prepare($query);
-            $resultado->bindParam(":id_producto_pk", $this->getIdProducto(), PDO::PARAM_INT);
-            $resultado->execute();
-            self::desconectar();
-        } catch (PDOException $Exception) {
-            self::desconectar();
-            return "Error ".$Exception->getCode().": ".$Exception->getMessage();
-        }
-    }
+    
+
     public function verificarExistenciaDb() {
-        $query = "SELECT * FROM FIDE_PRODUCTOS_TB WHERE id_producto_pk = :id_producto_pk";
+        $query = "SELECT * FROM fide_productos_tb WHERE nombre_producto = :nombre_producto";
         try {
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
-            
-            // Obtener el ID del producto desde la instancia de la clase
-            $id_producto = $this->getIdProducto();
-            
+    
+            // Obtener el nombre del usuario desde la instancia de la clase
+            $nombre_producto = $this->getNombreProducto();
+    
             // Vincular el parámetro
-            $resultado->bindParam(":id_producto_pk", $id_producto, PDO::PARAM_INT);
-            
+            $resultado->bindParam(":nombre_producto", $nombre_producto, PDO::PARAM_STR);
+    
             $resultado->execute();
             self::desconectar();
-            
-            $encontrado = false;
+    
             // Verificar si se encontraron registros
-            foreach ($resultado->fetchAll() as $reg) {
-                $encontrado = true;
-            }
-            
-            return $encontrado; // Devuelve true si existe, false si no
+            return $resultado->rowCount() > 0; // Devuelve true si existe, false si no
         } catch (PDOException $Exception) {
             self::desconectar();
-            $error = "Error ".$Exception->getCode().": ".$Exception->getMessage();
-            return $error; // Retorna el mensaje de error en caso de excepción
+            return false; // O maneja el error de acuerdo a tus necesidades
         }
     }
     

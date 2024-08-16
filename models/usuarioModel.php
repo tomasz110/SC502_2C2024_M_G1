@@ -168,16 +168,16 @@ class usuarioModel extends Conexion {
     }
 
     public function verificarExistenciaDb() {
-        $query = "SELECT * FROM FIDE_USUARIOS_TB WHERE nombre_usuario = :nombre_usuario";
+        $query = "SELECT * FROM FIDE_USUARIOS_TB WHERE correo_usuario = :correo_usuario";
         try {
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
     
             // Obtener el nombre del usuario desde la instancia de la clase
-            $nombre_usuario = $this->getNombreUsuario();
+            $correo_usuario = $this->getCorreoUsuario();
     
             // Vincular el parámetro
-            $resultado->bindParam(":nombre_usuario", $nombre_usuario, PDO::PARAM_STR);
+            $resultado->bindParam(":correo_usuario", $correo_usuario, PDO::PARAM_STR);
     
             $resultado->execute();
             self::desconectar();

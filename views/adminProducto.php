@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/toastr/toastr.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css">        
+    <link rel="stylesheet" href="plugins/toastr/toastr.css">
+
 </head>
 <body>
 <header>
@@ -48,6 +53,10 @@
                                 <div class="form-group col-md-4">
                                     <label for="ruta_imagen">Ruta de Imagen</label>
                                     <input type="text" class="form-control" id="ruta_imagen" name="ruta_imagen">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="id_emprendedor_fk">Id Emprendedor</label>
+                                    <input type="number" class="form-control" id="id_emprendedor_fk" name="id_emprendedor_fk" required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="activo">Activo</label>
@@ -100,6 +109,10 @@
                                     <label for="Eruta_imagen">Ruta de Imagen</label>
                                     <input type="text" class="form-control" id="Eruta_imagen" name="ruta_imagen">
                                 </div>
+                                <div class="form-group col-md_4">
+                                    <label for="Eid_emprendedor_fk">Id Emprendedor</label>
+                                    <input type="number" class="form-control" id="Eid_emprendedor_fk" name="id_emprendedor_fk" required>
+                                </div>
                                 <div class="form-group col-md-4">
                                     <label for="Eactivo">Activo</label>
                                     <select class="form-control" id="Eactivo" name="activo" required>
@@ -138,6 +151,7 @@
                                     <th>Precio</th>
                                     <th>Existencias</th>
                                     <th>Imagen</th>
+                                    <th>emprendedor</th>
                                     <th>Activo</th>
                                     <th>Opciones</th>
                                 </tr>
@@ -153,6 +167,7 @@
                                     <th>Precio</th>
                                     <th>Existencias</th>
                                     <th>Imagen</th>
+                                    <th>emprendedor</th>
                                     <th>Activo</th>
                                     <th>Opciones</th>
                                 </tr>
@@ -173,6 +188,13 @@
 <script src="plugins/bootbox/bootbox.min.js"></script>
 <script src="plugins/toastr/toastr.js"></script>
 <script src="assets/js/producto.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="plugins/DataTables/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+    <script src="plugins/bootbox/bootbox.min.js"></script>
+    <script src="plugins/toastr/toastr.js"></script>
 
 </body>
 </html>

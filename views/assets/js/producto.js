@@ -50,21 +50,17 @@ $('#producto_add').on('submit', function (event) {
         contentType: false,
         processData: false,
         success: function (datos) {
-            var response = JSON.parse(datos);
-            switch (response.error) {
-                case undefined:
-                    toastr.success('Producto registrado');
-                    $('#producto_add')[0].reset();
-                    tabla.api().ajax.reload();
-                    break;
-
-                case 'El producto ya existe':
-                    toastr.error('El producto ya existe... Corrija e inténtelo nuevamente...');
-                    break;
-
-                default:
-                    toastr.error('Hubo un error al tratar de ingresar los datos: ' + response.error);
-                    break;
+            var response = datos.trim(); 
+            if (response == '1') {
+                toastr.success('Usuario registrado');
+                $('#producto_add')[0].reset();
+                tabla.api().ajax.reload();
+            } else if (response == '2') {
+                toastr.error('El usuario ya existe.');
+            } else if (response == '3') {
+                toastr.error('Hubo un error al tratar de ingresar los datos.');
+            } else {
+                toastr.error('Respuesta del servidor inesperada: ' + response);
             }
             $('#btnRegistrar').removeAttr('disabled');
         },
@@ -156,7 +152,8 @@ $('#tbllistado tbody').on('click', 'button[id="modificarProducto"]', function ()
     $('#Eprecio').val(data[3]);
     $('#Eexistencias').val(data[4]);
     $('#Eruta_imagen').val(data[5]);
-    $('#Eactivo').val(data[6]);
+    $('#Eid_emprendedor_fk').val(data[6]);
+    $('#Eactivo').val(data[7]);
     return false;
 });
 

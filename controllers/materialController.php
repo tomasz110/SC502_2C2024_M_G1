@@ -69,15 +69,15 @@ switch ($_GET["op"]) {
         $material->setExistenciasMaterial($existencias);
         $material->setRutaImagenMaterial($ruta_imagen);
         $material->setIdEstado($activo);
-        $material->guardarMaterial();
+   // Verificar si el usuario ya existe
 
-        if ($material->verificarExistenciaDb()) {
-            echo 1; // Material registrado con éxito
-        } else {
-            echo 3; // Fallo al realizar el registro
-        }
-        break;
-
+   if ($material->verificarExistenciaDb()) {
+    echo 3; // Usuario ya existe
+} else {
+    $material->guardarMaterial(); 
+    echo 1; // Usuario registrado exitosamente
+}
+break;
         
 
     case 'activar':

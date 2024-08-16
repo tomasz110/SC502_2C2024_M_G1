@@ -38,15 +38,16 @@ switch ($_GET["op"]) {
         $emprendedor->setTelefono($telefono);
         $emprendedor->setCorreo($correo);
         $emprendedor->setIdEstado($activo);
-        $emprendedor->guardarEmprendedor();
+       
 
+        // Verificar si el usuario ya existe
         if ($emprendedor->verificarExistenciaDb()) {
-            echo 1; 
+            echo 3; // Usuario ya existe
         } else {
-            echo 3; 
+            $emprendedor->guardarEmprendedor(); 
+            echo 1; // Usuario registrado exitosamente
         }
         break;
-
         case 'activar':
             $emprendedor = new emprendedorModel();
             $emprendedor->setIdEmprendedor(trim($_POST['idEmprendedor']));

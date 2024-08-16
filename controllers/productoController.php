@@ -15,8 +15,9 @@ switch ($_GET["op"]) {
                 "3" => number_format($producto->getPrecioProducto(), 2),
                 "4" => $producto->getExistenciasProducto(),
                 "5" => $producto->getRutaImagenProducto(),
-                "6" => ($producto->getIdEstado() == 1) ? '<span class="label bg-success"> Activado </span>' : '<span class="label bg-danger"> Desactivado </span>',
-                "7" => '<button class="btn btn-warning" id="modificarProducto">Modificar</button> ' .
+                "6" => $producto->getIdEmprendedor(),
+                "7" => ($producto->getIdEstado() == 1) ? '<span class="label bg-success"> Activado </span>' : '<span class="label bg-danger"> Desactivado </span>',
+                "8" => '<button class="btn btn-warning" id="modificarProducto">Modificar</button> ' .
                     ($producto->getIdEstado() == 1 ? '<button class="btn btn-danger" onclick="desactivar('.$producto->getIdProducto().')">Desactivar</button>' : '<button class="btn btn-success" onclick="activar('.$producto->getIdProducto().')">Activar</button>')
             );
         }
@@ -41,8 +42,9 @@ switch ($_GET["op"]) {
                     "3" => number_format($producto->getPrecioProducto(), 2),
                     "4" => $producto->getExistenciasProducto(),
                     "5" => $producto->getRutaImagenProducto(),
-                    "6" => '<span class="label bg-success"> Activado </span>',
-                    "7" => '<button class="btn btn-warning" id="modificarProducto">Modificar</button> ' .
+                    "6" => $producto->getIdEmprendedor(),
+                    "7" => '<span class="label bg-success"> Activado </span>',
+                    "8" => '<button class="btn btn-warning" id="modificarProducto">Modificar</button> ' .
                         '<button class="btn btn-danger" onclick="desactivar('.$producto->getIdProducto().')">Desactivar</button>'
                 );
             }
@@ -61,6 +63,7 @@ switch ($_GET["op"]) {
         $precio = isset($_POST["precio"]) ? trim($_POST["precio"]) : 0;
         $existencias = isset($_POST["existencias"]) ? trim($_POST["existencias"]) : 0;
         $ruta_imagen = isset($_POST["ruta_imagen"]) ? trim($_POST["ruta_imagen"]) : "";
+        $id_emprendedor_fk = isset($_POST["id_emprendedor_fk"]) ? trim($_POST["id_emprendedor_fk"]) : 0;
         $activo = isset($_POST["activo"]) ? trim($_POST["activo"]) : 1;
 
         $producto = new productoModel();
@@ -69,13 +72,15 @@ switch ($_GET["op"]) {
         $producto->setPrecioProducto($precio);
         $producto->setExistenciasProducto($existencias);
         $producto->setRutaImagenProducto($ruta_imagen);
+        $producto->setIdEmprendedor($id_emprendedor_fk);
         $producto->setIdEstado($activo);
-        $producto->guardarProducto();
+        
 
         if ($producto->verificarExistenciaDb()) {
-            echo 1; 
+            echo 3; // Usuario ya existe
         } else {
-            echo 3; 
+            $producto->guardarProducto(); 
+            echo 1; // Usuario registrado exitosamente
         }
         break;
 
@@ -114,6 +119,7 @@ switch ($_GET["op"]) {
     $precio = isset($_POST["precio"]) ? trim($_POST["precio"]) : 0;
     $existencias = isset($_POST["existencias"]) ? trim($_POST["existencias"]) : 0;
     $ruta_imagen = isset($_POST["ruta_imagen"]) ? trim($_POST["ruta_imagen"]) : "";
+    $id_emprendedor_fk = isset($_POST["id_emprendedor_fk"]) ? trim($_POST["id_emprendedor_fk"]) : 0;
     $activo = isset($_POST["activo"]) ? trim($_POST["activo"]) : 1;
 
     $producto = new productoModel();
@@ -123,6 +129,7 @@ switch ($_GET["op"]) {
     $producto->setPrecioProducto($precio);
     $producto->setExistenciasProducto($existencias);
     $producto->setRutaImagenProducto($ruta_imagen);
+    $producto->setIdEmprendedor($id_emprendedor_fk);
     $producto->setIdEstado($activo);
 
     $resultado = $producto->actualizarProducto();
