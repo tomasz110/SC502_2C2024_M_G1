@@ -80,7 +80,7 @@
                 <a class="nav-link" href="./conozcanos.php">Conózcanos</a>
             </li>
             <li class="nav-item">
-                <a class="inicioSesion" href="./inicioSesion.php">Cerrar sesión</a>
+                <a class="inicioSesion" href="./inicioSesion.php">Iniciar sesión</a>
             </li>
         </ul>
     </header>
