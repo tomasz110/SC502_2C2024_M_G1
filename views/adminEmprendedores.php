@@ -105,7 +105,7 @@
                 </div>
             </div>
         </div>
-        <!-- Listado de productos -->
+    
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-dark">
@@ -125,7 +125,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Los datos serán llenados por DataTables -->
+                               
                             </tbody>
                             <tfoot>
                                 <tr>

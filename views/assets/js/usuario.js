@@ -24,7 +24,7 @@ function listarTodosUsuarios() {
             }
         },
         bDestroy: true,
-        iDisplayLength: 10 // cantidad de registros por página
+        iDisplayLength: 10 
     });
 }
 
@@ -44,7 +44,7 @@ $('#usuario_add').on('submit', function (event) {
         contentType: false,
         processData: false,
         success: function (datos) {
-            var response = datos.trim(); // Ajustado para verificar la respuesta
+            var response = datos.trim(); 
             if (response == '1') {
                 toastr.success('Usuario registrado');
                 $('#usuario_add')[0].reset();
@@ -106,7 +106,7 @@ $('#tbllistado tbody').on('click', 'button[id="modificarUsuario"]', function () 
     $('#Ecorreo').val(data[2]);
     $('#Epassword').val(data[6]);
     $('#Eestado').val(data[3] == '<span class="label bg-success"> Activado </span>' ? 1 : 0);
-    $('#Erol').val(data[4]); // Ajusta según tu implementación de roles
+    $('#Erol').val(data[4]); 
     return false;
 });
 

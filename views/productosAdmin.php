@@ -34,9 +34,9 @@
   <section>
     <div class="container">
         
-        <!-- Sección de Tarjetas de Productos -->
+    
         <div class="row justify-content-center mt-5" id="listadoProductos">
-            <!-- Aquí se insertarán las tarjetas generadas por JavaScript -->
+       
         </div>
     </div>
 </section>
@@ -45,7 +45,7 @@
 
   <footer>
   <?php
-    include 'footer.php';
+    include 'footerAdmin.php';
 
     
     ?>

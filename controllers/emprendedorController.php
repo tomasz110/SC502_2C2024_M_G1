@@ -41,9 +41,9 @@ switch ($_GET["op"]) {
         $emprendedor->guardarEmprendedor();
 
         if ($emprendedor->verificarExistenciaDb()) {
-            echo 1; // Producto registrado con éxito
+            echo 1; 
         } else {
-            echo 3; // Fallo al realizar el registro
+            echo 3; 
         }
         break;
 
@@ -51,14 +51,14 @@ switch ($_GET["op"]) {
             $emprendedor = new emprendedorModel();
             $emprendedor->setIdEmprendedor(trim($_POST['idEmprendedor']));
             $rspta = $emprendedor->activar();
-            echo ($rspta > 0) ? 1 : 2; // 1 para éxito, 0 para fallo
+            echo ($rspta > 0) ? 1 : 2; 
             break;
         
         case 'desactivar':
             $emprendedor = new emprendedorModel();
             $emprendedor->setIdEmprendedor(trim($_POST['idEmprendedor']));
             $rspta = $emprendedor->desactivar();
-            echo ($rspta > 0) ? 1 : 2; // 1 para éxito, 0 para fallo
+            echo ($rspta > 0) ? 1 : 2; 
             break;
         
 

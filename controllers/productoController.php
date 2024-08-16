@@ -73,9 +73,9 @@ switch ($_GET["op"]) {
         $producto->guardarProducto();
 
         if ($producto->verificarExistenciaDb()) {
-            echo 1; // Producto registrado con éxito
+            echo 1; 
         } else {
-            echo 3; // Fallo al realizar el registro
+            echo 3; 
         }
         break;
 

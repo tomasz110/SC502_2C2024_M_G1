@@ -18,7 +18,7 @@
   </header>
 <section>
     <div class="container mt-4">
-        <!-- Formulario de creación de producto -->
+  
         <div class="row">
             <div class="col-md-12" id="formulario_add">
                 <div class="card card-dark">
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </div>
-        <!-- Formulario de modificación de producto -->
+    
         <div class="row">
             <div class="col-md-12" id="formulario_update" style="display: none;">
                 <div class="card card-dark">
@@ -121,7 +121,7 @@
                 </div>
             </div>
         </div>
-        <!-- Listado de productos -->
+  
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-dark">
@@ -143,7 +143,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Los datos serán llenados por DataTables -->
+                          
                             </tbody>
                             <tfoot>
                                 <tr>

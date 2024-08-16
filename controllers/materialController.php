@@ -98,7 +98,7 @@ switch ($_GET["op"]) {
         $id_material = isset($_POST["idMaterial"]) ? $_POST["idMaterial"] : "";
         $material = new materialModel();
         $material->setIdMateriales($id_material);
-        $encontrado = $material->listarTodosMateriales(); // Cambiar según tu método de búsqueda
+        $encontrado = $material->listarTodosMateriales(); 
 
         if ($encontrado != null) {
             echo json_encode($encontrado);

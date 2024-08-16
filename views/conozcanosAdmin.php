@@ -107,7 +107,7 @@
   
 
   <footer>
-  <?php include 'footer.php'; ?>
+  <?php include 'footerAdmin.php'; ?>
   </footer>
 
 

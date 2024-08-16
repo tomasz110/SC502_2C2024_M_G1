@@ -24,7 +24,7 @@ function listarTodasCampanas() {
             }
         },
         bDestroy: true,
-        iDisplayLength: 5 // cantidad de registros por página
+        iDisplayLength: 5 
     });
 }
 

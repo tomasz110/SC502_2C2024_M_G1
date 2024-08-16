@@ -13,9 +13,9 @@ function cancelarForm() {
 
 function listarMaterialesTodos() {
     tabla = $('#tbllistado').dataTable({
-        aProcessing: true, // activamos el procesamiento de datatables
-        aServerSide: true, // paginación y filtrado del lado del servidor
-        dom: 'Bfrtip', // definimos los elementos del control de tabla
+        aProcessing: true, 
+        aServerSide: true, 
+        dom: 'Bfrtip', 
         buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdf'],
         ajax: {
             url: '../controllers/materialController.php?op=listar_para_tabla',
@@ -26,7 +26,7 @@ function listarMaterialesTodos() {
             }
         },
         bDestroy: true,
-        iDisplayLength: 5 // cantidad de registros por página
+        iDisplayLength: 5 
     });
 }
 
@@ -67,13 +67,13 @@ function listarMaterialesEnCards() {
     });
 }
 
-// Función Principal
+
 $(function () {
     listarMaterialesEnCards();
 });
 
 
-/* Función para agregar un material */
+
 $('#material_add').on('submit', function (event) {
     event.preventDefault();
     $('#btnRegistrar').prop('disabled', true);
@@ -159,7 +159,7 @@ $('#tbllistado tbody').on('click', 'button[id="modificarMaterial"]', function ()
     return false;
 });
 
-/* Función para modificar los datos de un material */
+
 $('#material_update').on('submit', function (event) {
     event.preventDefault();
     bootbox.confirm('¿Desea modificar los datos?', function (result) {
@@ -172,13 +172,13 @@ $('#material_update').on('submit', function (event) {
                 contentType: false,
                 processData: false,
                 success: function (datos) {
-                    console.log('Respuesta del servidor:', datos); // Agrega esta línea para depuración
+                    console.log('Respuesta del servidor:', datos); 
                     if (datos.trim() == '1') {
                         toastr.success('Material actualizado exitosamente');
-                        tabla.api().ajax.reload(); // Asegúrate de que tabla esté definido y tenga el método api
-                        limpiarForms(); // Asegúrate de que limpiarForms esté definido
-                        $('#formulario_update').hide(); // Asegúrate de que los IDs sean correctos
-                        $('#formulario_add').show(); // Asegúrate de que los IDs sean correctos
+                        tabla.api().ajax.reload();
+                        limpiarForms(); 
+                        $('#formulario_update').hide(); 
+                        $('#formulario_add').show(); 
                     } else {
                         toastr.error('Error: No se pudieron actualizar los datos.Respuesta del servidor: ' + datos);
                     }

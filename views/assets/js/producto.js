@@ -13,9 +13,9 @@ function cancelarForm() {
 
 function listarProductosTodos() {
     tabla = $('#tbllistado').dataTable({
-        aProcessing: true, // activamos el procesamiento de datatables
-        aServerSide: true, // paginación y filtrado del lado del servidor
-        dom: 'Bfrtip', // definimos los elementos del control de tabla
+        aProcessing: true, 
+        aServerSide: true, 
+        dom: 'Bfrtip', 
         buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdf'],
         ajax: {
             url: '../controllers/productoController.php?op=listar_para_tabla',
@@ -26,7 +26,7 @@ function listarProductosTodos() {
             }
         },
         bDestroy: true,
-        iDisplayLength: 5 // cantidad de registros por página
+        iDisplayLength: 5 
     });
 }
 
@@ -75,7 +75,7 @@ $('#producto_add').on('submit', function (event) {
     });
 });
 
-// Función para cargar el listado de productos en las cards
+
 function listarProductosEnCards() {
     $.ajax({
         url: '../controllers/productoController.php?op=listar_activos',
@@ -108,7 +108,7 @@ function listarProductosEnCards() {
 }
 
 
-// Función Principal
+
 $(function () {
     listarProductosEnCards();
 });
@@ -160,7 +160,7 @@ $('#tbllistado tbody').on('click', 'button[id="modificarProducto"]', function ()
     return false;
 });
 
-/* Función para modificar los datos de un producto */
+
 $('#producto_update').on('submit', function (event) {
     event.preventDefault();
     bootbox.confirm('¿Desea modificar los datos?', function (result) {
@@ -173,19 +173,19 @@ $('#producto_update').on('submit', function (event) {
                 contentType: false,
                 processData: false,
                 success: function (datos) {
-                    console.log('Respuesta del servidor:', datos); // Agrega esta línea para depuración
+                    console.log('Respuesta del servidor:', datos); 
                     if (datos.trim() == '1') {
                         toastr.success('Producto actualizado exitosamente');
-                        tabla.api().ajax.reload(); // Asegúrate de que tabla esté definido y tenga el método api
-                        limpiarForms(); // Asegúrate de que limpiarForms esté definido
-                        $('#formulario_update').hide(); // Asegúrate de que los IDs sean correctos
-                        $('#formulario_add').show(); // Asegúrate de que los IDs sean correctos
+                        tabla.api().ajax.reload(); 
+                        limpiarForms(); 
+                        $('#formulario_update').hide(); 
+                        $('#formulario_add').show(); 
                     } else {
                         toastr.error('Error: No se pudieron actualizar los datos. Respuesta del servidor: ' + datos);
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    console.log('Error AJAX:', jqXHR.responseText); // Agrega esta línea para depuración
+                    console.log('Error AJAX:', jqXHR.responseText); 
                     toastr.error('Error de comunicación: ' + textStatus + ' - ' + errorThrown);
                 }
             });

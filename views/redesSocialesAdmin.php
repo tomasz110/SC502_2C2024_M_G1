@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 </head>
 <body>
-<?php include 'header.php'?>
+<?php include 'headerAdmin.php'?>
 
 <div class="container mt-5">
   <div class="row justify-content-center">
@@ -151,7 +151,7 @@
   
 
   <footer>
-  <?php include 'footer.php'; ?>
+  <?php include 'footerAdmin.php'; ?>
   </footer>
 
 </body>

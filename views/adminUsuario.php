@@ -15,7 +15,7 @@
 
 <section>
     <div class="container mt-4">
-        <!-- Formulario de modificación de usuario -->
+    
         <div class="row">
             <div class="col-md-12" id="formulario_update">
                 <div class="card card-dark">
@@ -48,7 +48,7 @@
                                 <div class="form-group col-md-4">
                                     <label for="Eid_rol">Rol</label>
                                     <select class="form-control" id="Eid_rol" name="id_rol" required>
-                                        <!-- Aquí deberías cargar los roles desde la base de datos -->
+                                     
                                         <option value="1">Usuario</option>
                                         <option value="2">Administrador</option>
                                     </select>
@@ -67,7 +67,7 @@
                 </div>
             </div>
         </div>
-        <!-- Listado de usuarios -->
+    
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-dark">
@@ -87,7 +87,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Los datos serán llenados por DataTables -->
+                           
                             </tbody>
                             <tfoot>
                                 <tr>
