@@ -10,11 +10,7 @@ class usuarioModel extends Conexion {
     private $nombre_usuario = null;
     private $password_usuario = null;
     private $correo_usuario = null;
-    private $db;
-
-    public function __construct() {
-        $this->db = $this->getConexion(); // Inicializa la conexión
-    }
+   
 
     public function getIdUsuarioPk() {
         return $this->id_usuario_pk;
@@ -105,14 +101,14 @@ class usuarioModel extends Conexion {
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
     
-            // Asignar valores a variables
+            
             $nombre_usuario = $this->getNombreUsuario();
             $password_usuario = $this->getPasswordUsuario();
             $correo_usuario = $this->getCorreoUsuario();
             $id_estado_fk = $this->getIdEstadoFk();
             $id_rol_fk = $this->getIdRolFk();
     
-            // Usar bindParam con variables
+         
             $resultado->bindParam(":nombre_usuario", $nombre_usuario, PDO::PARAM_STR);
             $resultado->bindParam(":password_usuario", $password_usuario, PDO::PARAM_STR);
             $resultado->bindParam(":correo_usuario", $correo_usuario, PDO::PARAM_STR);
@@ -121,11 +117,11 @@ class usuarioModel extends Conexion {
     
             $resultado->execute();
             self::desconectar();
-            return true; // Añadido para indicar éxito
+            return true; 
         } catch (PDOException $Exception) {
             self::desconectar();
-            // Devuelve un mensaje de error detallado
-            return false; // Cambiado para indicar fracaso
+        
+            return false; 
         }
     }
     
@@ -142,7 +138,7 @@ class usuarioModel extends Conexion {
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
 
-            // Asignar valores a variables
+            
             $id_usuario_pk = $this->getIdUsuarioPk();
             $nombre_usuario = $this->getNombreUsuario();
             $password_usuario = $this->getPasswordUsuario();
@@ -150,7 +146,7 @@ class usuarioModel extends Conexion {
             $id_estado_fk = $this->getIdEstadoFk();
             $id_rol_fk = $this->getIdRolFk();
 
-            // Usar bindParam con variables
+           
             $resultado->bindParam(":id_usuario_pk", $id_usuario_pk, PDO::PARAM_INT);
             $resultado->bindParam(":nombre_usuario", $nombre_usuario, PDO::PARAM_STR);
             $resultado->bindParam(":password_usuario", $password_usuario, PDO::PARAM_STR);
@@ -160,7 +156,7 @@ class usuarioModel extends Conexion {
 
             $resultado->execute();
             self::desconectar();
-            return true; // Añadido para indicar éxito
+            return true; 
         } catch (PDOException $Exception) {
             self::desconectar();
             return "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
@@ -173,20 +169,20 @@ class usuarioModel extends Conexion {
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
     
-            // Obtener el nombre del usuario desde la instancia de la clase
+            
             $correo_usuario = $this->getCorreoUsuario();
     
-            // Vincular el parámetro
+            
             $resultado->bindParam(":correo_usuario", $correo_usuario, PDO::PARAM_STR);
     
             $resultado->execute();
             self::desconectar();
     
-            // Verificar si se encontraron registros
-            return $resultado->rowCount() > 0; // Devuelve true si existe, false si no
+            
+            return $resultado->rowCount() > 0; 
         } catch (PDOException $Exception) {
             self::desconectar();
-            return false; // O maneja el error de acuerdo a tus necesidades
+            return false; 
         }
     }
     
@@ -201,7 +197,7 @@ class usuarioModel extends Conexion {
             $resultado->execute();
             self::$cnx->commit();
             self::desconectar();
-            return $resultado->rowCount(); // Devuelve el número de filas afectadas
+            return $resultado->rowCount(); 
         } catch (PDOException $Exception) {
             self::$cnx->rollBack();
             self::desconectar();
@@ -210,7 +206,7 @@ class usuarioModel extends Conexion {
     }
 
     public function obtenerUsuarioPorEmailYPassword($correo, $password) {
-        $query = "SELECT * FROM FIDE_USUARIOS_TB WHERE correo_usuario = :email AND password_usuario = :password";
+        $query = "SELECT * FROM FIDE_USUARIOS_TB WHERE correo_usuario = :email AND password_usuario = :password AND id_estado_fk = 1";
         
         try {
             self::getConexion();
@@ -220,11 +216,12 @@ class usuarioModel extends Conexion {
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
-            // Manejar errores de consulta
+            
             echo 'Error al obtener usuario: ' . $e->getMessage();
             return false;
         }
     }
+    
     
 
     public function desactivar() {
@@ -238,7 +235,7 @@ class usuarioModel extends Conexion {
             $resultado->execute();
             self::$cnx->commit();
             self::desconectar();
-            return $resultado->rowCount(); // Devuelve el número de filas afectadas
+            return $resultado->rowCount(); 
         } catch (PDOException $Exception) {
             self::$cnx->rollBack();
             self::desconectar();

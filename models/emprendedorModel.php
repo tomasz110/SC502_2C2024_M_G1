@@ -97,6 +97,7 @@ class emprendedorModel extends Conexion
     }
     
     
+    
 
     public function guardarEmprendedor() {
         $query = "INSERT INTO fide_emprendedor_tb (nombre_emprendedor, telefono, correo, id_estado_fk) VALUES (:nombre_emprendedor, :telefono, :correo, :id_estado_fk)";
@@ -104,13 +105,13 @@ class emprendedorModel extends Conexion
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
             
-            // Asignar valores a variables
+           
             $nombre_emprendedor = $this->getNombreEmprendedor();
             $telefono = $this->getTelefono();
             $correo = $this->getCorreo();
             $id_estado_fk = $this->getIdEstado();
             
-            // Usar bindParam con variables
+           
             $resultado->bindParam(":nombre_emprendedor", $nombre_emprendedor, PDO::PARAM_STR);
             $resultado->bindParam(":telefono", $telefono, PDO::PARAM_STR);
             $resultado->bindParam(":correo", $correo, PDO::PARAM_STR);
@@ -120,7 +121,7 @@ class emprendedorModel extends Conexion
             self::desconectar();
         } catch (PDOException $Exception) {
             self::desconectar();
-            // Devuelve un mensaje de error detallado
+           
             echo json_encode(array("error" => $Exception->getMessage()));
         }
     }
@@ -136,14 +137,14 @@ class emprendedorModel extends Conexion
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
     
-            // Asignar valores a variables
+  
             $id_emprendedor_pk = $this->getIdEmprendedor();
             $nombre_emprendedor = $this->getNombreEmprendedor();
             $telefono = $this->getTelefono();
             $correo = $this->getCorreo();
             $id_estado_fk = $this->getIdEstado();
     
-            // Usar bindParam con variables
+         
             $resultado->bindParam(":id_emprendedor_pk", $id_emprendedor_pk, PDO::PARAM_INT);
             $resultado->bindParam(":nombre_emprendedor", $nombre_emprendedor, PDO::PARAM_STR);
             $resultado->bindParam(":telefono", $telefono, PDO::PARAM_STR);
@@ -152,7 +153,7 @@ class emprendedorModel extends Conexion
     
             $resultado->execute();
             self::desconectar();
-            return true; // Añadido para indicar éxito
+            return true; 
         } catch (PDOException $Exception) {
             self::desconectar();
             return "Error ".$Exception->getCode().": ".$Exception->getMessage();
@@ -165,19 +166,19 @@ class emprendedorModel extends Conexion
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
             
-            // Obtener el nombre del material desde la instancia de la clase
+            
             $nombre_emprendedor = $this->getNombreEmprendedor();
             
-            // Vincular el parámetro
+        
             $resultado->bindParam(":nombre_emprendedor", $nombre_emprendedor, PDO::PARAM_STR);
             
             $resultado->execute();
             self::desconectar();
             
-            return $resultado->rowCount() > 0; // Devuelve true si existe, false si no
+            return $resultado->rowCount() > 0;
         } catch (PDOException $Exception) {
             self::desconectar();
-            return false; // O maneja el error de acuerdo a tus necesidades
+            return false; 
         }
     }
     
@@ -193,7 +194,7 @@ class emprendedorModel extends Conexion
             $resultado->execute();
             self::$cnx->commit();
             self::desconectar();
-            return $resultado->rowCount(); // Devuelve el número de filas afectadas
+            return $resultado->rowCount();
         } catch (PDOException $Exception) {
             self::$cnx->rollBack();
             self::desconectar();
@@ -212,7 +213,7 @@ class emprendedorModel extends Conexion
             $resultado->execute();
             self::$cnx->commit();
             self::desconectar();
-            return $resultado->rowCount(); // Devuelve el número de filas afectadas
+            return $resultado->rowCount(); 
         } catch (PDOException $Exception) {
             self::$cnx->rollBack();
             self::desconectar();

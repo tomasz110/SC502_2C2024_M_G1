@@ -53,9 +53,9 @@ function listarMaterialesEnCards() {
                             <p class="card-text">${material[2]}</p>
                             <p class="card-text">Precio: $${material[3]}</p>
                             <p class="card-text">Existencias: ${material[4]}</p>
-                            <button class="btn btn-primary">Añadir al carrito</button>
+                            <button class="btn btn-primary" onclick="agregarAlCarrito(${material[0]}, '${material[1]}', ${material[3]}, 1, ${material[0]})">Añadir al carrito</button>
                         </div>
-                    </div>
+                      </div>
                     </div>
                 `;
             });
@@ -67,10 +67,32 @@ function listarMaterialesEnCards() {
     });
 }
 
+function agregarAlCarrito(idProducto, nombreProducto, precioProducto, cantidad, idMaterial = null) {
+    console.log('Llamada a agregarAlCarrito:', { idProducto, nombreProducto, precioProducto, cantidad, idMaterial });
+    $.ajax({
+        url: '../controllers/carritoController.php?op=agregar',
+        type: 'post',
+        data: {
+            id_producto: idProducto,
+            id_material: idMaterial,
+            nombre_producto: nombreProducto,
+            precio_producto: precioProducto,
+            cantidad: cantidad
+        },
+        success: function(response) {
+            toastr.success('Producto o material añadido al carrito');
+        },
+        error: function(e) {
+            toastr.error('No se pudo añadir el producto o material al carrito');
+        }
+    });
+}
 
-$(function () {
+
+$(document).ready(function() {
     listarMaterialesEnCards();
 });
+
 
 
 

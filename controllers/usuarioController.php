@@ -41,12 +41,12 @@ switch ($_GET["op"]) {
             $usuario->setIdEstadoFk($id_estado);
             $usuario->setIdRolFk($id_rol);
         
-            // Verificar si el usuario ya existe
+            
             if ($usuario->verificarExistenciaDb()) {
-                echo 3; // Usuario ya existe
+                echo 3; 
             } else {
                 $usuario->guardarUsuario(); 
-                echo 1; // Usuario registrado exitosamente
+                echo 1; 
             }
             break;
         
@@ -55,14 +55,14 @@ switch ($_GET["op"]) {
         $usuario = new usuarioModel();
         $usuario->setIdUsuarioPk(trim($_POST['idUsuario']));
         $rspta = $usuario->activar();
-        echo ($rspta > 0) ? 1 : 2; // 1 para éxito, 2 para fallo
+        echo ($rspta > 0) ? 1 : 2; 
         break;
 
     case 'desactivar':
         $usuario = new usuarioModel();
         $usuario->setIdUsuarioPk(trim($_POST['idUsuario']));
         $rspta = $usuario->desactivar();
-        echo ($rspta > 0) ? 1 : 2; // 1 para éxito, 2 para fallo
+        echo ($rspta > 0) ? 1 : 2; 
         break;
 
     case 'mostrar':
@@ -71,7 +71,7 @@ switch ($_GET["op"]) {
         $usuario->setIdUsuarioPk($id_usuario);
         $encontrado = $usuario->listarUsuarios(); 
 
-        // Busca el usuario específico
+      
         $usuarioEncontrado = null;
         foreach ($encontrado as $u) {
             if ($u->getIdUsuarioPk() == $id_usuario) {
@@ -112,9 +112,9 @@ switch ($_GET["op"]) {
         $resultado = $usuario->actualizarUsuario();
 
         if ($resultado) {
-            echo 1; // Indica éxito
+            echo 1; 
         } else {
-            echo 0; // Indica fallo
+            echo 0;
         }
         break;
 
@@ -122,14 +122,13 @@ switch ($_GET["op"]) {
             $correo = isset($_GET['correo']) ? trim($_GET['correo']) : "";
             $password = isset($_GET['password']) ? trim($_GET['password']) : "";
             
-            // Agrega registros para depuración
+            
             error_log("Correo recibido: $correo");
             error_log("Contraseña recibida: $password");
         
             $usuario = new usuarioModel();
             $usuarioData = $usuario->obtenerUsuarioPorEmailYPassword($correo, $password);
         
-            // Agrega información de depuración adicional
             if ($usuarioData) {
                 error_log("Usuario encontrado: " . print_r($usuarioData, true));
                 $_SESSION['rol'] = $usuarioData['id_rol_fk'];

@@ -32,7 +32,7 @@ switch ($_GET["op"]) {
 
         case 'listar_activos':
             $producto_model = new productoModel();
-            $productos = $producto_model->listarProductosActivos(); // Cambiado a listarProductosActivos
+            $productos = $producto_model->listarProductosActivos(); 
             $data = array();
             foreach ($productos as $producto) {
                 $data[] = array(
@@ -77,10 +77,10 @@ switch ($_GET["op"]) {
         
 
         if ($producto->verificarExistenciaDb()) {
-            echo 3; // Usuario ya existe
+            echo 3; 
         } else {
             $producto->guardarProducto(); 
-            echo 1; // Usuario registrado exitosamente
+            echo 1; 
         }
         break;
 
@@ -88,14 +88,14 @@ switch ($_GET["op"]) {
             $producto = new productoModel();
             $producto->setIdProducto(trim($_POST['idProducto']));
             $rspta = $producto->activar();
-            echo ($rspta > 0) ? 1 : 2; // 1 para éxito, 0 para fallo
+            echo ($rspta > 0) ? 1 : 2; 
             break;
         
         case 'desactivar':
             $producto = new productoModel();
             $producto->setIdProducto(trim($_POST['idProducto']));
             $rspta = $producto->desactivar();
-            echo ($rspta > 0) ? 1 : 2; // 1 para éxito, 0 para fallo
+            echo ($rspta > 0) ? 1 : 2; 
             break;
         
 
@@ -135,9 +135,9 @@ switch ($_GET["op"]) {
     $resultado = $producto->actualizarProducto();
 
     if ($producto->actualizarProducto()) {
-        echo 1; // Indica éxito
+        echo 1; 
     } else {
-        echo 0; // Indica fallo
+        echo 0; 
     }
 
 }

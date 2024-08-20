@@ -3,9 +3,7 @@ require_once '../config/Conexion.php';
 
 class productoModel extends Conexion
 {
-    /*=============================================
-    =            Atributos de la Clase            =
-    =============================================*/
+ 
     protected static $cnx;
     private $id_producto_pk = null;
     private $id_estado_fk = null;
@@ -18,9 +16,7 @@ class productoModel extends Conexion
 
 
 
-    /*=============================================
-    =            Encapsuladores de la Clase       =
-    =============================================*/
+ 
     public function getIdProducto()
     {
         return $this->id_producto_pk;
@@ -102,9 +98,8 @@ class productoModel extends Conexion
     }
 
 
-    /*=============================================
-    =            Metodos de la Clase              =
-    =============================================*/
+   
+
 
     public static function getConexion(){
         self::$cnx = Conexion::conectar();
@@ -148,7 +143,7 @@ class productoModel extends Conexion
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
             
-            // Asignar valores a variables
+           
             $nombre_producto = $this->getNombreProducto();
             $descripcion_producto = $this->getDescripcionProducto();
             $precio_producto = $this->getPrecioProducto();
@@ -157,7 +152,7 @@ class productoModel extends Conexion
             $id_emprendedor_fk = $this->getIdEmprendedor();
             $id_estado_fk = $this->getIdEstado();
             
-            // Usar bindParam con variables
+            
             $resultado->bindParam(":nombre_producto", $nombre_producto, PDO::PARAM_STR);
             $resultado->bindParam(":descripcion_producto", $descripcion_producto, PDO::PARAM_STR);
             $resultado->bindParam(":precio_producto", $precio_producto, PDO::PARAM_STR);
@@ -170,13 +165,13 @@ class productoModel extends Conexion
             self::desconectar();
         } catch (PDOException $Exception) {
             self::desconectar();
-            // Devuelve un mensaje de error detallado
+            
             echo json_encode(array("error" => $Exception->getMessage()));
         }
     }
 
     public function listarProductosActivos() {
-        $query = "SELECT * FROM FIDE_PRODUCTOS_TB WHERE id_estado_fk = 1"; // Filtra solo los activos
+        $query = "SELECT * FROM FIDE_PRODUCTOS_TB WHERE id_estado_fk = 1"; 
         $arr = array();
         try {
             self::getConexion();
@@ -218,7 +213,7 @@ class productoModel extends Conexion
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
     
-            // Asignar valores a variables
+            
             $id_producto_pk = $this->getIdProducto();
             $nombre_producto = $this->getNombreProducto();
             $descripcion_producto = $this->getDescripcionProducto();
@@ -228,7 +223,7 @@ class productoModel extends Conexion
             $id_emprendedor_fk = $this->getIdEmprendedor();
             $id_estado_fk = $this->getIdEstado();
     
-            // Usar bindParam con variables
+          
             $resultado->bindParam(":id_producto_pk", $id_producto_pk, PDO::PARAM_INT);
             $resultado->bindParam(":nombre_producto", $nombre_producto, PDO::PARAM_STR);
             $resultado->bindParam(":descripcion_producto", $descripcion_producto, PDO::PARAM_STR);
@@ -240,7 +235,7 @@ class productoModel extends Conexion
     
             $resultado->execute();
             self::desconectar();
-            return true; // Añadido para indicar éxito
+            return true; 
         } catch (PDOException $Exception) {
             self::desconectar();
             return "Error ".$Exception->getCode().": ".$Exception->getMessage();
@@ -256,20 +251,20 @@ class productoModel extends Conexion
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
     
-            // Obtener el nombre del usuario desde la instancia de la clase
+           
             $nombre_producto = $this->getNombreProducto();
     
-            // Vincular el parámetro
+            
             $resultado->bindParam(":nombre_producto", $nombre_producto, PDO::PARAM_STR);
     
             $resultado->execute();
             self::desconectar();
     
-            // Verificar si se encontraron registros
-            return $resultado->rowCount() > 0; // Devuelve true si existe, false si no
+          
+            return $resultado->rowCount() > 0;
         } catch (PDOException $Exception) {
             self::desconectar();
-            return false; // O maneja el error de acuerdo a tus necesidades
+            return false; 
         }
     }
     
@@ -284,7 +279,7 @@ class productoModel extends Conexion
             $resultado->execute();
             self::$cnx->commit();
             self::desconectar();
-            return $resultado->rowCount(); // Devuelve el número de filas afectadas
+            return $resultado->rowCount(); 
         } catch (PDOException $Exception) {
             self::$cnx->rollBack();
             self::desconectar();
@@ -303,7 +298,7 @@ class productoModel extends Conexion
             $resultado->execute();
             self::$cnx->commit();
             self::desconectar();
-            return $resultado->rowCount(); // Devuelve el número de filas afectadas
+            return $resultado->rowCount(); 
         } catch (PDOException $Exception) {
             self::$cnx->rollBack();
             self::desconectar();

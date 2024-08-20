@@ -69,13 +69,13 @@ switch ($_GET["op"]) {
         $material->setExistenciasMaterial($existencias);
         $material->setRutaImagenMaterial($ruta_imagen);
         $material->setIdEstado($activo);
-   // Verificar si el usuario ya existe
+   
 
    if ($material->verificarExistenciaDb()) {
-    echo 3; // Usuario ya existe
+    echo 3; 
 } else {
     $material->guardarMaterial(); 
-    echo 1; // Usuario registrado exitosamente
+    echo 1; 
 }
 break;
         
@@ -84,14 +84,14 @@ break;
         $material = new materialModel();
         $material->setIdMateriales(trim($_POST['idMaterial']));
         $rspta = $material->activar();
-        echo ($rspta > 0) ? 1 : 2; // 1 para éxito, 2 para fallo
+        echo ($rspta > 0) ? 1 : 2; 
         break;
 
     case 'desactivar':
         $material = new materialModel();
         $material->setIdMateriales(trim($_POST['idMaterial']));
         $rspta = $material->desactivar();
-        echo ($rspta > 0) ? 1 : 2; // 1 para éxito, 2 para fallo
+        echo ($rspta > 0) ? 1 : 2; 
         break;
 
     case 'mostrar':
@@ -128,9 +128,9 @@ break;
         $resultado = $material->actualizarMaterial();
 
         if ($material->actualizarMaterial()) {
-            echo 1; // Indica éxito
+            echo 1; 
         } else {
-            echo 0; // Indica fallo
+            echo 0; 
         }
         break;
 }

@@ -40,12 +40,12 @@ switch ($_GET["op"]) {
         $emprendedor->setIdEstado($activo);
        
 
-        // Verificar si el usuario ya existe
+       
         if ($emprendedor->verificarExistenciaDb()) {
-            echo 3; // Usuario ya existe
+            echo 3; 
         } else {
             $emprendedor->guardarEmprendedor(); 
-            echo 1; // Usuario registrado exitosamente
+            echo 1;
         }
         break;
         case 'activar':
@@ -93,9 +93,9 @@ switch ($_GET["op"]) {
     $resultado = $emprendedor->actualizarEmprendedor();
 
     if ($emprendedor->actualizarEmprendedor()) {
-        echo 1; // Indica éxito
+        echo 1; 
     } else {
-        echo 0; // Indica fallo
+        echo 0; 
     }
 
 }

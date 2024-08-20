@@ -3,9 +3,7 @@ require_once '../config/Conexion.php';
 
 class materialModel extends Conexion
 {
-    /*=============================================
-    =            Atributos de la Clase            =
-    =============================================*/
+
     protected static $cnx;
     private $id_materiales_pk = null;
     private $id_estado_fk = null;
@@ -17,9 +15,7 @@ class materialModel extends Conexion
 
 
 
-    /*=============================================
-    =            Encapsuladores de la Clase       =
-    =============================================*/
+   
     public function getIdMateriales()
     {
         return $this->id_materiales_pk;
@@ -91,9 +87,7 @@ class materialModel extends Conexion
     }
 
 
-    /*=============================================
-    =            Metodos de la Clase              =
-    =============================================*/
+  
 
     public static function getConexion(){
         self::$cnx = Conexion::conectar();
@@ -130,7 +124,7 @@ class materialModel extends Conexion
         }
     }
     public function listarMaterialesActivos() {
-        $query = "SELECT * FROM FIDE_MATERIALES_TB WHERE id_estado_fk = 1"; // Filtra solo los activos
+        $query = "SELECT * FROM FIDE_MATERIALES_TB WHERE id_estado_fk = 1"; 
         $arr = array();
         try {
             self::getConexion();
@@ -147,7 +141,7 @@ class materialModel extends Conexion
                 $material->setExistenciasMaterial($encontrado['existencias_material']);
                 $material->setRutaImagenMaterial($encontrado['ruta_imagen_material']);
                 $material->setIdEstado($encontrado['id_estado_fk']);
-                $arr[] = $material; // Corregido: Añadir el objeto $material, no el array $materiales
+                $arr[] = $material; 
             }
             return $arr;
         } catch (PDOException $Exception) {
@@ -163,7 +157,7 @@ class materialModel extends Conexion
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
             
-            // Asignar valores a variables
+            
             $nombre_material = $this->getNombreMaterial();
             $descripcion_material = $this->getDescripcionMaterial();
             $precio_material = $this->getPrecioMaterial();
@@ -171,7 +165,7 @@ class materialModel extends Conexion
             $ruta_imagen_material = $this->getRutaImagenMaterial();
             $id_estado_fk = $this->getIdEstado();
             
-            // Usar bindParam con variables
+          
             $resultado->bindParam(":nombre_material", $nombre_material, PDO::PARAM_STR);
             $resultado->bindParam(":descripcion_material", $descripcion_material, PDO::PARAM_STR);
             $resultado->bindParam(":precio_material", $precio_material, PDO::PARAM_STR);
@@ -183,7 +177,7 @@ class materialModel extends Conexion
             self::desconectar();
         } catch (PDOException $Exception) {
             self::desconectar();
-            // Devuelve un mensaje de error detallado
+            
             echo json_encode(array("error" => $Exception->getMessage()));
         }
     }
@@ -201,7 +195,7 @@ class materialModel extends Conexion
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
     
-            // Asignar valores a variables
+           
             $id_materiales_pk = $this->getIdMateriales();
             $nombre_material = $this->getNombreMaterial();
             $descripcion_material = $this->getDescripcionMaterial();
@@ -210,7 +204,7 @@ class materialModel extends Conexion
             $ruta_imagen_material = $this->getRutaImagenMaterial();
             $id_estado_fk = $this->getIdEstado();
     
-            // Usar bindParam con variables
+          
             $resultado->bindParam(":id_materiales_pk", $id_materiales_pk, PDO::PARAM_INT);
             $resultado->bindParam(":nombre_material", $nombre_material, PDO::PARAM_STR);
             $resultado->bindParam(":descripcion_material", $descripcion_material, PDO::PARAM_STR);
@@ -221,7 +215,7 @@ class materialModel extends Conexion
     
             $resultado->execute();
             self::desconectar();
-            return true; // Añadido para indicar éxito
+            return true; 
         } catch (PDOException $Exception) {
             self::desconectar();
             return "Error ".$Exception->getCode().": ".$Exception->getMessage();
@@ -248,10 +242,10 @@ class materialModel extends Conexion
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
             
-            // Obtener el nombre del material desde la instancia de la clase
+           
             $nombre_material = $this->getNombreMaterial();
             
-            // Vincular el parámetro
+            
             $resultado->bindParam(":nombre_material", $nombre_material, PDO::PARAM_STR);
             
             $resultado->execute();
@@ -259,10 +253,10 @@ class materialModel extends Conexion
             
             $encontrado = false;
            
-            return $resultado->rowCount() > 0; // Devuelve true si existe, false si no
+            return $resultado->rowCount() > 0; 
         } catch (PDOException $Exception) {
             self::desconectar();
-            return false; // O maneja el error de acuerdo a tus necesidades
+            return false; // 
         }
     }
     
@@ -278,7 +272,7 @@ class materialModel extends Conexion
             $resultado->execute();
             self::$cnx->commit();
             self::desconectar();
-            return $resultado->rowCount(); // Devuelve el número de filas afectadas
+            return $resultado->rowCount(); 
         } catch (PDOException $Exception) {
             self::$cnx->rollBack();
             self::desconectar();
@@ -297,7 +291,7 @@ class materialModel extends Conexion
             $resultado->execute();
             self::$cnx->commit();
             self::desconectar();
-            return $resultado->rowCount(); // Devuelve el número de filas afectadas
+            return $resultado->rowCount(); 
         } catch (PDOException $Exception) {
             self::$cnx->rollBack();
             self::desconectar();

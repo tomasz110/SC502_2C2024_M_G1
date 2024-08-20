@@ -3,13 +3,11 @@ function limpiarForms() {
     $('#producto_update').trigger('reset');
 }
 
-
 function cancelarForm() {
     limpiarForms();
     $('#formulario_add').show();
     $('#formulario_update').hide();
 }
-
 
 function listarProductosTodos() {
     tabla = $('#tbllistado').dataTable({
@@ -30,14 +28,10 @@ function listarProductosTodos() {
     });
 }
 
-
 $(function () {
     $('#formulario_update').hide();
     listarProductosTodos();
 });
-
-
-
 
 $('#producto_add').on('submit', function (event) {
     event.preventDefault();
@@ -71,7 +65,6 @@ $('#producto_add').on('submit', function (event) {
     });
 });
 
-
 function listarProductosEnCards() {
     $.ajax({
         url: '../controllers/productoController.php?op=listar_activos',
@@ -89,7 +82,7 @@ function listarProductosEnCards() {
                             <p class="card-text">${producto[2]}</p>
                             <p class="card-text">Precio: $${producto[3]}</p>
                             <p class="card-text">Existencias: ${producto[4]}</p>
-                            <button class="btn btn-primary">Añadir al carrito</button>
+                            <button class="btn btn-primary" onclick="agregarAlCarrito(${producto[0]}, '${producto[1]}', ${producto[3]}, 1)">Añadir al carrito</button>
                         </div>
                     </div>
                     </div>
@@ -124,7 +117,6 @@ function activar(id) {
     });
 }
 
-
 function desactivar(id) {
     bootbox.confirm('¿Está seguro de desactivar el producto?', function (result) {
         if (result) {
@@ -139,7 +131,6 @@ function desactivar(id) {
         }
     });
 }
-
 
 $('#tbllistado tbody').on('click', 'button[id="modificarProducto"]', function () {
     var data = $('#tbllistado').DataTable().row($(this).parents('tr')).data();
@@ -156,6 +147,137 @@ $('#tbllistado tbody').on('click', 'button[id="modificarProducto"]', function ()
     $('#Eactivo').val(data[7]);
     return false;
 });
+
+function agregarAlCarrito(idProducto, nombreProducto, precioProducto, cantidad, idMaterial = null) {
+    console.log(`Agregando al carrito: Producto ID: ${idProducto}, Material ID: ${idMaterial}, Nombre: ${nombreProducto}, Precio: ${precioProducto}, Cantidad: ${cantidad}`);
+    $.ajax({
+        url: '../controllers/carritoController.php?op=agregar',
+        type: 'post',
+        data: {
+            id_producto: idProducto,
+            id_material: idMaterial,
+            nombre_producto: nombreProducto,
+            precio_producto: precioProducto,
+            cantidad: cantidad
+        },
+        success: function(response) {
+            console.log('Respuesta del servidor:', response);
+            toastr.success('Producto o material añadido al carrito');
+        },
+        error: function(e) {
+            console.log('Error:', e.responseText);
+            toastr.error('No se pudo añadir el producto o material al carrito');
+        }
+    });
+}
+
+
+function mostrarCarrito() {
+    $.ajax({
+        url: '../controllers/carritoController.php?op=mostrar',
+        type: 'get',
+        dataType: 'json',
+        success: function(response) {
+            let carritoHTML = '';
+            let total = 0;
+
+            if (response && Object.keys(response).length) {
+                for (let key in response) {
+                    let producto = response[key];
+                    carritoHTML += `
+                        <tr>
+                            <td>${producto.nombre}</td>
+                            <td>${producto.precio}</td>
+                            <td>${producto.cantidad}</td>
+                            <td>${producto.precio * producto.cantidad}</td>
+                            <td><button class="btn btn-danger" onclick="eliminarDelCarrito('${key}')">Eliminar</button></td>
+                        </tr>
+                    `;
+                    total += producto.precio * producto.cantidad;
+                }
+            } else {
+                carritoHTML = '<tr><td colspan="5" class="text-center">El carrito está vacío.</td></tr>';
+            }
+
+            $('#carrito tbody').html(carritoHTML);
+            $('#total').text('Total: $' + total);
+        },
+        error: function(e) {
+            toastr.error('Error al mostrar el carrito');
+        }
+    });
+}
+
+function eliminarDelCarrito(key) {
+    $.ajax({
+        url: '../controllers/carritoController.php?op=eliminar',
+        type: 'post',
+        data: { id_producto: key.split('-')[0], id_material: key.split('-')[1] || null },
+        success: function(response) {
+            toastr.success('Producto o material eliminado del carrito');
+            mostrarCarrito();
+        },
+        error: function(e) {
+            toastr.error('No se pudo eliminar el producto o material del carrito');
+        }
+    });
+}
+
+function procederAlPago() {
+    $.ajax({
+        url: '../controllers/facturaController.php?op=generar',
+        type: 'post',
+        dataType: 'json',
+        success: function(response) {
+            console.log('Respuesta del servidor:', response); 
+            if (response.success) {
+                var cleanedHtml = response.html.replace(/(\r\n|\n|\r)/gm, " ");
+                $('#detalleFactura').html(cleanedHtml);
+                $('#totalFactura').text('Total: $' + response.total);
+                $('#nombreUsuario').text('Comprador: ' + response.nombre_usuario);
+                
+                $('#facturaModal').modal('show'); 
+                toastr.success('Factura generada exitosamente.');
+            } else {
+                toastr.error('Error al generar la factura.');
+            }
+        },
+        error: function(e) {
+            toastr.error('No se pudo procesar el pago.');
+        }
+    });
+}
+
+function confirmarPago() {
+    $.ajax({
+        url: '../controllers/carritoController.php?op=vaciar',
+        type: 'post',
+        success: function(response) {
+            if (response.trim() === '1') {
+                toastr.success('Pago confirmado y carrito vaciado.');
+                $('#facturaModal').modal('hide'); 
+
+               
+                setTimeout(function() {
+                   
+                    $('#carrito tbody').html('<tr><td colspan="5" class="text-center">El carrito está vacío.</td></tr>');
+                    $('#total').text('Total: $0'); 
+                    location.reload(); 
+                }, 300); 
+            } else {
+                toastr.error('Pago Procesado');
+            }
+        },
+        error: function(e) {
+            toastr.error('No se pudo procesar la solicitud.');
+        }
+    });
+}
+
+
+
+
+
 
 
 $('#producto_update').on('submit', function (event) {

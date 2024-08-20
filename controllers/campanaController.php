@@ -28,6 +28,33 @@ switch ($_GET["op"]) {
         echo json_encode($resultados);
         break;
 
+        case 'listar_campanas_activas':
+            $campana_model = new campanaModel();
+            $campanas = $campana_model->listarCampanasActivas(); 
+            $data = array();
+            foreach ($campanas as $campana) {
+                $data[] = array(
+                    "0" => $campana->getIdCampanaPk(),
+                    "1" => $campana->getNombreCampana(),
+                    "2" => $campana->getDescripcionCampana(),
+                    "3" => $campana->getFechaCampana(),
+                    "4" => $campana->getRutaImagenCampana(),
+                    "5" => $campana->getRutaMapaCampana(),
+                    "6" => '<span class="label bg-success"> Activado </span>',
+                    "7" => '<button class="btn btn-warning" id="modificarCampana">Modificar</button> ' .
+                           '<button class="btn btn-danger" onclick="desactivar('.$campana->getIdCampanaPk().')">Desactivar</button>'
+                );
+            }
+            $resultados = array(
+                "sEcho" => 1,
+                "iTotalRecords" => count($data),
+                "iTotalDisplayRecords" => count($data),
+                "aaData" => $data
+            );
+            echo json_encode($resultados);
+            break;
+        
+
     case 'insertar':
         $nombre = isset($_POST["nombre"]) ? trim($_POST["nombre"]) : "";
         $descripcion = isset($_POST["descripcion"]) ? trim($_POST["descripcion"]) : "";
@@ -44,12 +71,12 @@ switch ($_GET["op"]) {
         $campana->setRutaMapaCampana($ruta_mapa);
         $campana->setIdEstadoFk($activo);
 
-       // Verificar si el usuario ya existe
+      
        if ($campana->verificarExistenciaDb()) {
-        echo 3; // Usuario ya existe
+        echo 3; 
     } else {
         $campana->guardarEmprendedor(); 
-        echo 1; // Usuario registrado exitosamente
+        echo 1; 
     }
     break;
 
@@ -57,14 +84,14 @@ switch ($_GET["op"]) {
         $campana = new campanaModel();
         $campana->setIdCampanaPk(trim($_POST['idCampana']));
         $rspta = $campana->activar();
-        echo ($rspta > 0) ? 1 : 2; // 1 para éxito, 0 para fallo
+        echo ($rspta > 0) ? 1 : 2; 
         break;
 
     case 'desactivar':
         $campana = new campanaModel();
         $campana->setIdCampanaPk(trim($_POST['idCampana']));
         $rspta = $campana->desactivar();
-        echo ($rspta > 0) ? 1 : 2; // 1 para éxito, 0 para fallo
+        echo ($rspta > 0) ? 1 : 2; 
         break;
 
     case 'mostrar':
@@ -101,9 +128,9 @@ switch ($_GET["op"]) {
         $resultado = $campana->actualizarCampana();
 
         if ($resultado) {
-            echo 1; // Indica éxito
+            echo 1; 
         } else {
-            echo 0; // Indica fallo
+            echo 0; 
         }
         break;
 }
