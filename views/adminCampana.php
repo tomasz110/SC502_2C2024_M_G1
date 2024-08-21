@@ -8,6 +8,25 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/toastr/toastr.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <style>
+        .table-fixed {
+            table-layout: fixed; 
+            width: 100%; 
+        }
+        .table-fixed th, .table-fixed td {
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+            white-space: nowrap; 
+        }
+        .column-id { width: 5%; }
+        .column-nombre { width: 15%; }
+        .column-descripcion { width: 20%; }
+        .column-fecha { width: 10%; }
+        .column-ruta-imagen { width: 15%; }
+        .column-ruta-mapa { width: 15%; }
+        .column-activo { width: 10%; }
+        .column-opciones { width: 40%; }
+    </style>
 </head>
 <body>
 <header>
@@ -118,7 +137,7 @@
                 </div>
             </div>
         </div>
-     
+
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-dark">
@@ -126,32 +145,31 @@
                         <h3 class="card-title">Campañas existentes</h3>
                     </div>
                     <div class="card-body p-0">
-                        <table id="tbllistado" class="table table-striped table-bordered table-hover">
+                        <table id="tbllistado" class="table table-striped table-bordered table-hover table-fixed">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Descripción</th>
-                                    <th>Fecha</th>
-                                    <th>Ruta Imagen</th>
-                                    <th>Ruta Mapa</th>
-                                    <th>Activo</th>
-                                    <th>Opciones</th>
+                                    <th class="column-id">ID</th>
+                                    <th class="column-nombre">Nombre</th>
+                                    <th class="column-descripcion">Descripción</th>
+                                    <th class="column-fecha">Fecha</th>
+                                    <th class="column-ruta-imagen">Ruta Imagen</th>
+                                    <th class="column-ruta-mapa">Ruta Mapa</th>
+                                    <th class="column-activo">Activo</th>
+                                    <th class="column-opciones">Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                           
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Descripción</th>
-                                    <th>Fecha</th>
-                                    <th>Ruta Imagen</th>
-                                    <th>Ruta Mapa</th>
-                                    <th>Activo</th>
-                                    <th>Opciones</th>
+                                    <th class="column-id">ID</th>
+                                    <th class="column-nombre">Nombre</th>
+                                    <th class="column-descripcion">Descripción</th>
+                                    <th class="column-fecha">Fecha</th>
+                                    <th class="column-ruta-imagen">Ruta Imagen</th>
+                                    <th class="column-ruta-mapa">Ruta Mapa</th>
+                                    <th class="column-activo">Activo</th>
+                                    <th class="column-opciones">Opciones</th>
                                 </tr>
                             </tfoot>
                         </table>

@@ -1,16 +1,16 @@
 $(document).ready(function() {
     $('#contactForm').on('submit', function(e) {
-        e.preventDefault(); // Evita el envío tradicional del formulario
+        e.preventDefault(); 
 
         $.ajax({
-            url: '../controllers/correoController.php', // Asegúrate de que la ruta sea correcta
+            url: '../controllers/correoController.php', 
             type: 'POST',
-            data: $(this).serialize(), // Enviar datos del formulario
+            data: $(this).serialize(), 
             success: function(response) {
-                if (response.trim() === 'success') { // Usa trim() para eliminar espacios en blanco
+                if (response.trim() === 'success') { 
                     toastr.success('El mensaje se ha enviado correctamente.');
                     
-                    // Limpiar los campos del formulario
+        
                     $('#contactForm')[0].reset();
                 } else {
                     toastr.error('Error al enviar el mensaje.');
