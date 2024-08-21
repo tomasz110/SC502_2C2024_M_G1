@@ -7,15 +7,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="plugins/toastr/toastr.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 </head>
 <body>
 <header>
-  <?php
-    include 'headerAdmin.php';
-    
-    ?>
-
-  </header>
+  <?php include 'headerAdmin.php'; ?>
+</header>
 <section>
     <div class="container mt-4">
         <!-- Formulario de creación de producto -->
@@ -34,7 +31,7 @@
                                     <input type="text" class="form-control" id="nombre" name="nombre" required>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="telefono">Telefono</label>
+                                    <label for="telefono">Teléfono</label>
                                     <input type="text" class="form-control" id="telefono" name="telefono" required>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -77,7 +74,7 @@
                                     <input type="text" class="form-control" id="Enombre" name="nombre" required>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="Etelefono">Telefono</label>
+                                    <label for="Etelefono">Teléfono</label>
                                     <input type="text" class="form-control" id="Etelefono" name="telefono" required>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -118,8 +115,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nombre</th>
-                                    <th>telefono</th>
-                                    <th>correo</th>
+                                    <th>Teléfono</th>
+                                    <th>Correo</th>
                                     <th>Activo</th>
                                     <th>Opciones</th>
                                 </tr>
@@ -131,8 +128,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nombre</th>
-                                    <th>telefono</th>
-                                    <th>correo</th>
+                                    <th>Teléfono</th>
+                                    <th>Correo</th>
                                     <th>Activo</th>
                                     <th>Opciones</th>
                                 </tr>
@@ -144,10 +141,9 @@
         </div>
     </div>
 </section>
-
-<script src="plugins/jquery/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="plugins/DataTables/datatables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
 <script src="plugins/bootbox/bootbox.min.js"></script>

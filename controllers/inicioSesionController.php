@@ -2,6 +2,7 @@
 require_once '../models/usuarioModel.php';
 session_start();
 
+
 switch ($_POST["op"]) {
     case 'autenticar':
         $correo = isset($_POST['correo']) ? trim($_POST['correo']) : "";
@@ -24,9 +25,10 @@ switch ($_POST["op"]) {
 
             echo json_encode([
                 'success' => false,
-                'message' => 'Credenciales incorrectas'
+                'message' => 'Credenciales Incorrectas'
             ]);
         }
         break;
 }
 ?>
+<?php

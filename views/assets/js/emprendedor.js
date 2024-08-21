@@ -56,7 +56,7 @@ $('#emprendedor_add').on('submit', function (event) {
             } else if (response == '2') {
                 toastr.error('El usuario ya existe.');
             } else if (response == '3') {
-                toastr.error('Hubo un error al tratar de ingresar los datos.');
+                toastr.error('Ingrese un emprededor con nombre diferente.');
             } else {
                 toastr.error('Respuesta del servidor inesperada: ' + response);
             }

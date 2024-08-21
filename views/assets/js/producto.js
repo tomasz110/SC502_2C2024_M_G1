@@ -52,7 +52,7 @@ $('#producto_add').on('submit', function (event) {
             } else if (response == '2') {
                 toastr.error('El usuario ya existe.');
             } else if (response == '3') {
-                toastr.error('Hubo un error al tratar de ingresar los datos.');
+                toastr.error('Ingresar un producto con nombre diferente.');
             } else {
                 toastr.error('Respuesta del servidor inesperada: ' + response);
             }
@@ -265,7 +265,7 @@ function confirmarPago() {
                     location.reload(); 
                 }, 300); 
             } else {
-                toastr.error('Pago Procesado');
+                toastr.success('Pago Procesado');
             }
         },
         error: function(e) {

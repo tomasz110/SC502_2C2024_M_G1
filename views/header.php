@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <style>
         .nav-item {
             margin-right: 15px;
@@ -49,14 +52,18 @@
             color: white;
             background-color: #A9B2AC;
         }
+
     </style>
 </head>
 <body>
     <header>
         <ul class="nav">
-            <li>
-                <a class="logo" href="./campañas.php">EcoSales</a>
-            </li>
+        <li  class="logo">
+            <a href="./campañas.php">
+                <img src="./assets/img/planta.png"alt="Logo de Anggelus Estética" style="width: 50px; height: 45px;"> 
+            </a>
+        </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="./campañas.php">Campañas</a>
             </li>
@@ -72,8 +79,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="./carrito.php">Carrito</a>
             </li>
-            <li class="nav-item">
-                <a class="inicioSesion" href="./inicioSesion.php">Cerrar sesión</a>
+            <?php if (isset($_SESSION['id_usuario'])): ?>
+                    <a class="inicioSesion" href="./inicioSesion.php">Cerrar sesión</a>
+                <?php else: ?>
+                    <a class="inicioSesion" href="./inicioSesion.php">Iniciar sesión</a>
+                <?php endif; ?>
             </li>
         </ul>
     </header>
