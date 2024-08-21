@@ -15,15 +15,22 @@
             margin: 20px;
         }
         .column {
-            flex: 1;
-            padding: 20px;
-            text-align: left;
-        }
+    flex: 1;
+    padding: 20px;
+    margin: 0 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px shadow #28a745; 
+}
+
         .section {
             margin-bottom: 20px;
         }
         .section-title {
             text-align: center;
+            font-weight: bold;
+            color: #6B8F71;
         }
         .image-container {
             text-align: center;
@@ -49,11 +56,12 @@
                 <div class="image-container">
                     <img src="./assets/img/reciclaje-de-residuos.jpg" alt="Imagen relacionada con la historia del proyecto">
                 </div>
-                <h6 class="text-body-secondary">Cómo surgió este proyecto</h6>
-                <p>El emprendimiento nació de la observación diaria de la creciente cantidad de basura en las calles y espacios públicos de Costa Rica. Esta situación no solo afecta la estética de nuestro entorno, sino que también representa un riesgo significativo para la salud pública y la biodiversidad. Vimos la necesidad de actuar.</p>
-                <p>La motivación detrás de esta iniciativa es la preocupación por el impacto ambiental negativo que los desechos no gestionados adecuadamente tienen en nuestro país. La contaminación de suelos, ríos y océanos, así como los daños a la fauna y flora locales, son problemas graves que necesitan una solución inmediata. Además, hay una falta de conciencia generalizada sobre la importancia del reciclaje y la gestión responsable de los residuos. Este emprendimiento busca llenar ese vacío, ofreciendo una alternativa viable y sostenible.</p>
-                <p>Nuestro principal objetivo es contribuir a la construcción de un Costa Rica más limpio y sostenible. A través de la recolección de basura y el reciclaje de materiales como envases, cartón y plásticos, queremos reducir la cantidad de residuos que terminan en vertederos y espacios naturales. Asimismo, buscamos educar a la comunidad sobre la importancia del reciclaje y fomentar prácticas responsables que se integren en la vida diaria de las personas. En última instancia, aspiramos a crear una cultura ambiental más consciente y activa, donde cada ciudadano se sienta responsable del cuidado de su entorno.</p>
-            </div>
+                <p><strong>Cómo surgió este proyecto</strong></p>
+                <p>El emprendimiento surgió de la observación de la creciente acumulación de basura en las calles y espacios públicos de Costa Rica, lo cual no solo afecta la estética del entorno, sino que también representa un riesgo significativo para la salud pública y la biodiversidad. Este problema refleja una necesidad urgente de actuar para mitigar el impacto ambiental negativo de los desechos mal gestionados.
+                <p>La motivación principal de la iniciativa es la preocupación por la contaminación de suelos, ríos y océanos, así como el daño a la fauna y flora locales. Además, se ha identificado una falta de conciencia general sobre la importancia del reciclaje y la gestión responsable de los residuos. Por lo tanto, el emprendimiento busca llenar este vacío ofreciendo una solución viable y sostenible.</p>
+                <p>Nuestro objetivo es contribuir a un Costa Rica más limpio y sostenible mediante la recolección de basura y el reciclaje de materiales como envases, cartón y plásticos. Deseamos reducir la cantidad de residuos que terminan en vertederos y espacios naturales. Asimismo, queremos educar a la comunidad sobre la importancia del reciclaje y fomentar prácticas responsables que se integren en la vida diaria. En última instancia, aspiramos a fomentar una cultura ambiental más consciente y activa, donde cada ciudadano se sienta responsable del cuidado de su entorno.</p>
+                </p>
+                </div>
         </div>
         <div class="column">
             <div class="section">
@@ -73,7 +81,7 @@
     </section>
     <footer>
   <?php
-    include 'footer.php';
+    include 'footerAdmin.php';
 
     
     ?>
