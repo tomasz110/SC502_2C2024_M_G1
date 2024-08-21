@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redes Sociales</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/styles.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/toastr/toastr.css">
 </head>
 <body>
 <?php include 'header.php'?>
@@ -133,21 +135,24 @@
     <div class="row justify-content-center">
       <div class="col-md-5">
         <h1 class="text-center">Contáctanos</h1>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Email:</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">Asunto:</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-        <button type="button" class="btn btn-outline-secondary">
-          Enviar
-        </button>
+        <form id="contactForm" action="../controllers/correoController.php" method="POST">
+    <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required />
+    </div>
+    <div class="mb-3">
+        <label for="asunto" class="form-label">Asunto:</label>
+        <textarea class="form-control" id="asunto" name="asunto" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-outline-secondary">Enviar</button>
+</form>
+
+
       </div>
     </div>
   </div>
 </section>
+
   
 
   <footer>
@@ -155,6 +160,12 @@
   </footer>
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="plugins/DataTables/datatables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+  <script src="plugins/bootbox/bootbox.min.js"></script>
+  <script src="plugins/toastr/toastr.js"></script>
+    <script src="assets/js/correo.js"></script>
 </html>
